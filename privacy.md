@@ -34,7 +34,7 @@ The app does not currently use analytics or tracking tools. If that changes, thi
 
 ## Keeping and deleting your data
 
-We keep your information for as long as you have an account. You can delete your account at any time in the app under Settings, then Delete account. This permanently deletes your account and everything saved to it from our server, and clears the app's data on your device. Signing out does not delete anything.
+We keep your information for as long as you have an account. You can delete your account at any time in the app under Settings, then Delete account. This permanently deletes your account and everything saved to it from our server, and clears the app's data on your device. Signing out removes the app's data from your device but keeps your account and everything saved to it.
 
 ## Children
 
