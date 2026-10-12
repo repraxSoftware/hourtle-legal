@@ -2,13 +2,13 @@
 
 Last updated: October 11, 2026
 
-RealDay Blocks is provided by RepraxSoftware.
+Hourtle is provided by RepraxSoftware.
 
-These terms apply to your use of RealDay Blocks ("the app"). By using the app you agree to them.
+These terms apply to your use of Hourtle ("the app"). By using the app you agree to them.
 
 ## Using the app
 
-RealDay Blocks is a planning and time-tracking tool. You may use it for your own personal, non-commercial purposes. You are responsible for the information you enter and for keeping your device and Apple Account secure.
+Hourtle is a planning and time-tracking tool. You may use it for your own personal, non-commercial purposes. You are responsible for the information you enter and for keeping your device and Apple Account secure.
 
 ## Your account
 

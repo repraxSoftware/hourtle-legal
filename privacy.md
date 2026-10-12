@@ -2,9 +2,9 @@
 
 Last updated: October 11, 2026
 
-RealDay Blocks is provided by RepraxSoftware.
+Hourtle is provided by RepraxSoftware.
 
-RealDay Blocks ("the app", "we") helps you plan your day and track the time you spend on what matters to you. This policy explains what the app collects, why, and the choices you have.
+Hourtle ("the app", "we") helps you plan your day and track the time you spend on what matters to you. This policy explains what the app collects, why, and the choices you have.
 
 ## What we collect
 
