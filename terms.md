@@ -1,6 +1,6 @@
 # Terms of Service
 
-Last updated: October 11, 2026
+Last updated: October 13, 2026
 
 Hourtle is provided by RepraxSoftware.
 
@@ -13,6 +13,21 @@ Hourtle is a planning and time-tracking tool. You may use it for your own person
 ## Your account
 
 You need to sign in with Sign in with Apple to use the app. You can delete your account at any time in Settings.
+
+## Subscription and free trial
+
+Hourtle needs a subscription to use. There are two plans, monthly and yearly, and the price of each is shown in the app before you subscribe.
+
+- **Free trial.** A new subscriber starts with a free trial. Its length is shown in the app before you start it. If you do not cancel at least 24 hours before the trial ends, your plan starts and you are charged its price. The free trial is offered once per Apple Account.
+- **Billing.** Payment is taken from your Apple Account by Apple. We never see your payment details.
+- **Renewal.** Your subscription renews automatically for the same period, at the same price, unless you cancel at least 24 hours before the end of the current period.
+- **Cancelling.** You can cancel at any time in Settings in the app, or in your Apple Account's subscriptions. You keep access until the end of the period you have paid for.
+- **Refunds.** Purchases are handled by Apple, and refunds are given according to Apple's policies. You can ask Apple for one at reportaproblem.apple.com.
+- **Price changes.** If a plan's price changes, you will be told in advance and can cancel before the new price applies.
+
+## Privacy
+
+How we handle your information, including the counts we keep of how the app is used, is set out in the Privacy Policy, which you can read in the app under Settings.
 
 ## Acceptable use
 
@@ -36,4 +51,4 @@ You can stop using the app and delete your account at any time. We may suspend a
 
 ## Contact
 
-Questions about these terms: repraxfitness@gmail.com
+Questions about these terms: support@hourtle.com

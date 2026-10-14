@@ -1,6 +1,6 @@
 # Privacy Policy
 
-Last updated: October 12, 2026
+Last updated: October 13, 2026
 
 Hourtle is provided by RepraxSoftware.
 
@@ -12,6 +12,7 @@ Hourtle ("the app", "we") helps you plan your day and track the time you spend o
 - **Your plans.** The routines you set up: the times you wake up, go to bed and work, and how you divide the rest of your day.
 - **Your daily records.** For each day, the time you planned and the time you used for each category, including any timer that is running.
 - **Your to-dos.** The text of the to-do items you add.
+- **How the app is used.** Which screens are opened and which buttons are tapped, such as starting a timer or winning a trophy, along with the model of your device, its version of iOS and the version of the app. This is not linked to your account, and it never includes anything you type, such as your to-dos.
 
 ## What we do not collect
 
@@ -19,11 +20,12 @@ Hourtle ("the app", "we") helps you plan your day and track the time you spend o
 - Your location.
 - Your photos, microphone or camera.
 - Which apps you have or use, or how long you use them.
+- Your payment details. Subscriptions are bought through Apple, which tells the app only whether your subscription is active.
 - Advertising identifiers. The app has no ads and does not track you across other apps or websites.
 
 ## How we use it
 
-We use this information only to run the app: to show your day, keep your history, and bring your data back when you sign in on another device or reinstall the app. We do not sell your information or share it for advertising.
+We use your account, plans, daily records and to-dos only to run the app: to show your day, keep your history, and bring your data back when you sign in on another device or reinstall the app. We use the information about how the app is used only to understand which parts of it people use and to improve it. We do not sell your information or share it for advertising.
 
 ## Where it is stored
 
@@ -41,11 +43,19 @@ You can turn blocking off in the app at any time, or remove the app's Screen Tim
 
 ## Analytics
 
-The app does not currently use analytics or tracking tools. If that changes, this policy will be updated before it does.
+The app uses PostHog (posthog.com) to count how it is used: which screens are opened and which buttons are tapped. PostHog stores this on our behalf on servers in the United States.
+
+- It is not linked to your account or to your Apple identifier.
+- It never includes what you type. Your to-dos and plans are not sent to PostHog.
+- The app's screens are not recorded.
+- We ask PostHog not to work out your location from your connection.
+- It is not used for advertising, and it is not used to track you across other apps or websites.
 
 ## Keeping and deleting your data
 
 We keep your information for as long as you have an account. You can delete your account at any time in the app under Settings, then Delete account. This permanently deletes your account and everything saved to it from our server, and clears the app's data on your device. Signing out removes the app's data from your device but keeps your account and everything saved to it.
+
+The information about how the app is used is not linked to your account, so we cannot pick yours out to delete it.
 
 ## Children
 
@@ -57,4 +67,4 @@ We may update this policy. The date at the top shows when it last changed, and t
 
 ## Contact
 
-Questions about this policy or your data: repraxfitness@gmail.com
+Questions about this policy or your data: support@hourtle.com
