@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hourtle: find time for what matters</title>
+  <meta name="description" content="Hourtle shows you how much of your day is really yours, then helps you spend it on the thing you care about.">
+  <meta property="og:title" content="Hourtle: find time for what matters">
+  <meta property="og:description" content="See how much of your day is really yours, then spend it on the thing you care about.">
+  <meta property="og:image" content="https://hourtle.com/assets/icon.png">
+  <meta property="og:type" content="website">
+  <meta name="apple-itunes-app" content="app-id=6822551344">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <style>
+    :root {
+      --green: #1FA85C;
+      --green-edge: #17824A;
+      --blue: #2E9BF5;
+      --orange: #FF9A1F;
+      --purple: #A873F5;
+      --ink: #1c1c1e;
+      --quiet: #6b6b70;
+      --outline: #e3e3e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    header { padding: 20px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; }
+    .brand img { width: 44px; height: 44px; border-radius: 10px; }
+
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding: 32px 0 72px; }
+    h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.08; margin: 0 0 20px; font-weight: 800; letter-spacing: -0.01em; }
+    h1 span { color: var(--green); }
+    .lead { font-size: 1.25rem; color: var(--quiet); margin: 0 0 32px; max-width: 30em; }
+    .soon {
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 16px;
+      background: var(--green);
+      box-shadow: 0 5px 0 var(--green-edge);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .note { margin: 22px 0 0; color: var(--quiet); font-size: 0.95rem; }
+
+    .scene {
+      position: relative;
+      border-radius: 32px;
+      border: 2px solid var(--outline);
+      box-shadow: 0 4px 0 var(--outline);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: #cfe9c2 url("assets/meadow.jpg") center top / cover no-repeat;
+    }
+    .scene img { position: absolute; left: 50%; bottom: 9%; width: 46%; transform: translateX(-50%); }
+
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 72px; }
+    .card {
+      border: 2px solid var(--outline);
+      box-shadow: 0 4px 0 var(--outline);
+      border-radius: 22px;
+      padding: 26px 24px 28px;
+    }
+    .card img { height: 112px; display: block; margin-bottom: 14px; }
+    .card h2 { margin: 0 0 8px; font-size: 1.3rem; font-weight: 800; }
+    .card p { margin: 0; color: var(--quiet); }
+    .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+
+    .support { border-top: 2px solid var(--outline); padding: 56px 0; text-align: center; }
+    .support h2 { margin: 0 0 8px; font-size: 1.7rem; font-weight: 800; }
+    .support p { margin: 0 auto; color: var(--quiet); max-width: 34em; }
+    .support .mail { display: inline-block; margin-top: 18px; font-size: 1.2rem; }
+
+    footer { border-top: 2px solid var(--outline); padding: 28px 0 40px; color: var(--quiet); font-size: 0.95rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+    footer nav { display: flex; gap: 24px; }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 16px 0 56px; }
+      .scene { max-width: 420px; width: 100%; margin: 0 auto; }
+      .features { grid-template-columns: 1fr; padding-bottom: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <img src="assets/icon.png" alt="">
+      Hourtle
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <h1>Find time for <span>what matters.</span></h1>
+        <p class="lead">Hourtle shows you how much of your day is really yours, then helps you spend it on the thing you care about.</p>
+        <span class="soon">Coming soon to the App Store</span>
+        <p class="note">For iPhone.</p>
+      </div>
+      <div class="scene">
+        <img src="assets/turtleplan.png" alt="A tortoise holding a clipboard with a plan for the day">
+      </div>
+    </section>
+
+    <section class="wrap features">
+      <div class="card">
+        <img src="assets/turtlework.png" alt="">
+        <h2><span class="dot" style="background: var(--blue)"></span>See your purpose time</h2>
+        <p>Answer a few quick questions about your day. Hourtle takes off sleep, work, chores and everyday things, and shows what's left for you.</p>
+      </div>
+      <div class="card">
+        <img src="assets/turtlewalk.png" alt="">
+        <h2><span class="dot" style="background: var(--green)"></span>Stay focused</h2>
+        <p>Start a timer and your tortoise sets off for the finish flag. You can block distracting apps until you pause or the time runs out.</p>
+      </div>
+      <div class="card">
+        <img src="assets/turtlecheer.png" alt="">
+        <h2><span class="dot" style="background: var(--orange)"></span>Keep your streak</h2>
+        <p>Spend 30 minutes a day on what matters to build a streak, win trophies, and see how each day went on your calendar.</p>
+      </div>
+    </section>
+
+    <section class="support" id="support">
+      <div class="wrap">
+        <h2>Need a hand?</h2>
+        <p>Questions, problems or ideas: write to us and a person will read it.</p>
+        <a class="mail" href="mailto:support@hourtle.com">support@hourtle.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 RepraxSoftware</span>
+      <nav>
+        <a href="privacy">Privacy Policy</a>
+        <a href="terms">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
