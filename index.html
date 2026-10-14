@@ -4,155 +4,321 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hourtle: find time for what matters</title>
-  <meta name="description" content="Hourtle shows you how much of your day is really yours, then helps you spend it on the thing you care about.">
+  <meta name="description" content="Of your 24 hours, how many are actually yours? Hourtle takes out sleep, work and chores, then helps you spend what's left on the thing you care about.">
   <meta property="og:title" content="Hourtle: find time for what matters">
-  <meta property="og:description" content="See how much of your day is really yours, then spend it on the thing you care about.">
+  <meta property="og:description" content="Of your 24 hours, how many are actually yours? Find out, then spend them on the thing you care about.">
   <meta property="og:image" content="https://hourtle.com/assets/icon.png">
   <meta property="og:type" content="website">
   <meta name="apple-itunes-app" content="app-id=6822551344">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --green: #1FA85C;
       --green-edge: #17824A;
+      --green-tint: #E7F6EC;
       --blue: #2E9BF5;
-      --orange: #FF9A1F;
       --purple: #A873F5;
-      --ink: #1c1c1e;
-      --quiet: #6b6b70;
-      --outline: #e3e3e6;
+      --orange: #FF9A1F;
+      --sleep: #D9DBE0;
+      --ink: #1C1C1E;
+      --quiet: #6B6B70;
+      --line: #E3E3E6;
+      --track: #ECEDEF;
+      --paper: #FFFFFF;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-family: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+      font-weight: 600;
       color: var(--ink);
-      background: #fff;
+      background: var(--paper);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    a { color: var(--blue); font-weight: 800; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-    header { padding: 20px 0; }
-    .brand { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; }
-    .brand img { width: 44px; height: 44px; border-radius: 10px; }
+    /* Header */
+    header .wrap {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding-top: 18px; padding-bottom: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 900; color: var(--ink); }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 40px; height: 40px; border-radius: 10px; }
+    header nav { display: flex; gap: 22px; font-size: 0.95rem; }
+    header nav a { color: var(--quiet); }
 
-    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding-block: 32px 72px; }
-    h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.08; margin: 0 0 20px; font-weight: 800; letter-spacing: -0.01em; }
-    h1 span { color: var(--green); }
-    .lead { font-size: 1.25rem; color: var(--quiet); margin: 0 0 32px; max-width: 30em; }
-    .soon {
-      display: inline-block;
-      padding: 16px 28px;
-      border-radius: 16px;
-      background: var(--green);
+    /* Hero */
+    .hero { text-align: center; padding-block: 40px 24px; }
+    h1 {
+      font-size: clamp(2.3rem, 6.2vw, 3.9rem);
+      font-weight: 900; line-height: 1.04; letter-spacing: -0.015em;
+      margin: 0 auto 16px; max-width: 14em;
+    }
+    .lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--quiet); margin: 0 auto 36px; max-width: 32em; }
+
+    /* The 24-hour card: the one object on the page with an outline and a pressed edge. */
+    .day {
+      text-align: left;
+      border: 2px solid var(--line); border-radius: 24px;
+      box-shadow: 0 4px 0 var(--line);
+      padding: 24px;
+      margin: 0 auto; max-width: 760px;
+    }
+    .controls {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 22px;
+      margin-bottom: 22px;
+    }
+    .control label { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 0.92rem; color: var(--quiet); margin-bottom: 8px; }
+    .control output { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .control input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 28px; margin: 0; background: transparent; cursor: pointer;
+    }
+    .control input[type="range"]::-webkit-slider-runnable-track { height: 8px; border-radius: 999px; background: var(--track); }
+    .control input[type="range"]::-moz-range-track { height: 8px; border-radius: 999px; background: var(--track); }
+    .control input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 26px; height: 26px; margin-top: -9px; border-radius: 50%;
+      background: #fff; border: 3px solid var(--knob, var(--ink));
+      box-shadow: 0 2px 0 var(--knob, var(--ink));
+    }
+    .control input[type="range"]::-moz-range-thumb {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #fff; border: 3px solid var(--knob, var(--ink));
+      box-shadow: 0 2px 0 var(--knob, var(--ink));
+    }
+    .control.sleep { --knob: #9A9DA6; }
+    .control.work { --knob: var(--blue); }
+    .control.chores { --knob: var(--purple); }
+
+    .bar {
+      display: flex; height: 44px; border-radius: 14px; overflow: hidden; background: var(--track);
+      margin-bottom: 14px;
+    }
+    .bar span { height: 100%; transition: flex-basis 0.45s cubic-bezier(.2,.8,.2,1); flex: 0 0 0%; min-width: 0; }
+    .bar .s-sleep { background: var(--sleep); }
+    .bar .s-work { background: var(--blue); }
+    .bar .s-chores { background: var(--purple); }
+    .bar .s-misc { background: var(--orange); }
+    .bar .s-yours { background: var(--green); }
+    .key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; color: var(--quiet); margin-bottom: 18px; }
+    .key span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; vertical-align: 0; background: var(--dot); }
+    .result {
+      border-top: 2px solid var(--line); padding-top: 18px;
+      font-size: clamp(1.15rem, 2.4vw, 1.45rem); font-weight: 800; line-height: 1.35;
+    }
+    .result strong { color: var(--green-edge); font-weight: 900; }
+    .result small { display: block; font-size: 0.95rem; font-weight: 600; color: var(--quiet); margin-top: 4px; }
+
+    .cta { margin: 32px auto 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .button {
+      display: inline-block; padding: 16px 30px; border-radius: 16px;
+      background: var(--green); color: #fff; font-weight: 800; font-size: 1.05rem;
       box-shadow: 0 5px 0 var(--green-edge);
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
     }
-    .note { margin: 22px 0 0; color: var(--quiet); font-size: 0.95rem; }
+    .cta .note { margin: 0; color: var(--quiet); font-size: 0.92rem; }
 
-    .scene {
-      position: relative;
-      border-radius: 32px;
-      border: 2px solid var(--outline);
-      box-shadow: 0 4px 0 var(--outline);
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      background: #cfe9c2 url("assets/meadow.jpg") center top / cover no-repeat;
+    /* Meadow */
+    .meadow { margin-top: 72px; position: relative; }
+    .meadow .band {
+      background: #CFE9C2 url("assets/meadow.jpg") center 28% / cover no-repeat;
+      height: clamp(220px, 32vw, 320px); position: relative; overflow: hidden;
     }
-    .scene img { position: absolute; left: 50%; bottom: 9%; width: 46%; transform: translateX(-50%); }
-
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 72px; }
-    .card {
-      border: 2px solid var(--outline);
-      box-shadow: 0 4px 0 var(--outline);
-      border-radius: 22px;
-      padding: 26px 24px 28px;
+    .meadow img { position: absolute; bottom: 8%; left: 12%; width: clamp(140px, 22vw, 230px); }
+    .meadow p {
+      position: absolute; right: 6%; top: 14%; max-width: 20em;
+      background: rgba(255,255,255,0.92); border-radius: 18px; padding: 16px 20px;
+      font-weight: 700; line-height: 1.4; margin: 0;
     }
-    .card img { height: 112px; display: block; margin-bottom: 14px; }
-    .card h2 { margin: 0 0 8px; font-size: 1.3rem; font-weight: 800; }
-    .card p { margin: 0; color: var(--quiet); }
-    .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
 
-    .support { border-top: 2px solid var(--outline); padding: 56px 0; text-align: center; }
-    .support h2 { margin: 0 0 8px; font-size: 1.7rem; font-weight: 800; }
-    .support p { margin: 0 auto; color: var(--quiet); max-width: 34em; }
-    .support .mail { display: inline-block; margin-top: 18px; font-size: 1.2rem; }
+    /* Three points: plain, no cards. */
+    .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-block: 72px 48px; }
+    .point img { height: 120px; width: auto; margin-bottom: 16px; }
+    .point h2 { font-size: 1.35rem; font-weight: 900; margin: 0 0 6px; }
+    .point p { margin: 0; color: var(--quiet); }
+    .point.focus h2 { color: var(--blue); }
+    .point.streak h2 { color: var(--orange); }
+    .point.plan h2 { color: var(--green-edge); }
 
-    footer { border-top: 2px solid var(--outline); padding: 28px 0 40px; color: var(--quiet); font-size: 0.95rem; }
-    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
-    footer nav { display: flex; gap: 24px; }
+    /* Footer, with the turtle peeking over its top edge. */
+    footer { position: relative; margin-top: 56px; border-top: 2px solid var(--line); padding-block: 36px 40px; }
+    footer .peek { position: absolute; right: 8%; top: 0; transform: translateY(-74%); width: clamp(110px, 16vw, 160px); }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; align-items: center; }
+    footer .support { margin: 0; }
+    footer nav { display: flex; gap: 22px; }
+    footer .legal { color: var(--quiet); font-size: 0.9rem; width: 100%; margin: 6px 0 0; }
 
     @media (max-width: 760px) {
-      .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 16px 56px; }
-      .soon { padding: 14px 20px; font-size: 0.9rem; }
-      .scene { max-width: 420px; width: 100%; margin: 0 auto; }
-      .features { grid-template-columns: 1fr; padding-bottom: 56px; }
+      .controls { grid-template-columns: 1fr 1fr; }
+      .points { grid-template-columns: 1fr; gap: 32px; }
+      /* On a phone the caption sits under the picture instead of over it. */
+      .meadow p { position: static; max-width: 26em; margin: 18px auto 0; padding: 0 24px; text-align: center; background: none; }
+      .meadow img { bottom: 6%; left: 8%; width: 44vw; }
+      footer .peek { right: 5%; }
+    }
+    @media (max-width: 440px) {
+      .day { padding: 18px; border-radius: 20px; }
+      .controls { grid-template-columns: 1fr; gap: 14px; }
+      .bar { height: 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .bar span { transition: none; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap brand">
-      <img src="assets/icon.png" alt="">
-      Hourtle
+    <div class="wrap">
+      <a class="brand" href="/"><img src="assets/icon.png" alt="">Hourtle</a>
+      <nav><a href="privacy">Privacy</a><a href="terms">Terms</a></nav>
     </div>
   </header>
 
   <main>
     <section class="wrap hero">
-      <div>
-        <h1>Find time for <span>what matters.</span></h1>
-        <p class="lead">Hourtle shows you how much of your day is really yours, then helps you spend it on the thing you care about.</p>
-        <span class="soon">Coming soon to the App Store</span>
-        <p class="note">For iPhone.</p>
+      <h1>How much of your day is actually yours?</h1>
+      <p class="lead">Set your day below. Hourtle takes out sleep, work and chores, and shows what's left for the thing you care about.</p>
+
+      <div class="day" id="day">
+        <div class="controls">
+          <div class="control sleep">
+            <label for="wake"><span>Wake up</span><output id="wake-out">7:00 am</output></label>
+            <input id="wake" type="range" min="300" max="660" step="15" value="420" aria-describedby="wake-out">
+          </div>
+          <div class="control sleep">
+            <label for="bed"><span>Bedtime</span><output id="bed-out">10:30 pm</output></label>
+            <input id="bed" type="range" min="1200" max="1560" step="15" value="1350" aria-describedby="bed-out">
+          </div>
+          <div class="control work">
+            <label for="work"><span>Work</span><output id="work-out">9 hr</output></label>
+            <input id="work" type="range" min="0" max="720" step="30" value="540" aria-describedby="work-out">
+          </div>
+          <div class="control chores">
+            <label for="chores"><span>Chores</span><output id="chores-out">2 hr 30 min</output></label>
+            <input id="chores" type="range" min="0" max="360" step="15" value="150" aria-describedby="chores-out">
+          </div>
+        </div>
+
+        <div class="bar" role="img" aria-labelledby="result">
+          <span class="s-sleep" id="b-sleep"></span>
+          <span class="s-work" id="b-work"></span>
+          <span class="s-chores" id="b-chores"></span>
+          <span class="s-yours" id="b-yours"></span>
+        </div>
+        <div class="key">
+          <span style="--dot: var(--sleep)">Sleep</span>
+          <span style="--dot: var(--blue)">Work</span>
+          <span style="--dot: var(--purple)">Chores</span>
+          <span style="--dot: var(--green)">Yours</span>
+        </div>
+
+        <p class="result" id="result" aria-live="polite"></p>
       </div>
-      <div class="scene">
-        <img src="assets/turtleplan.png" alt="A tortoise holding a clipboard with a plan for the day">
+
+      <div class="cta">
+        <span class="button">Coming soon to the App Store</span>
+        <p class="note">For iPhone. Free for two weeks, then a small yearly plan.</p>
       </div>
     </section>
 
-    <section class="wrap features">
-      <div class="card">
-        <img src="assets/turtlework.png" alt="">
-        <h2><span class="dot" style="background: var(--blue)"></span>See your purpose time</h2>
-        <p>Answer a few quick questions about your day. Hourtle takes off sleep, work, chores and everyday things, and shows what's left for you.</p>
-      </div>
-      <div class="card">
+    <section class="meadow" aria-label="The Hourtle tortoise walking to the finish flag">
+      <div class="band">
         <img src="assets/turtlewalk.png" alt="">
-        <h2><span class="dot" style="background: var(--green)"></span>Stay focused</h2>
-        <p>Start a timer and your tortoise sets off for the finish flag. You can block distracting apps until you pause or the time runs out.</p>
       </div>
-      <div class="card">
-        <img src="assets/turtlecheer.png" alt="">
-        <h2><span class="dot" style="background: var(--orange)"></span>Keep your streak</h2>
-        <p>Spend 30 minutes a day on what matters to build a streak, win trophies, and see how each day went on your calendar.</p>
-      </div>
+      <p class="caption">Start a timer and your tortoise sets off for the flag. It only moves when you spend time on what matters.</p>
     </section>
 
-    <section class="support" id="support">
-      <div class="wrap">
-        <h2>Need a hand?</h2>
-        <p>Questions, problems or ideas: write to us and a person will read it.</p>
-        <a class="mail" href="mailto:support@hourtle.com">support@hourtle.com</a>
+    <section class="wrap points">
+      <div class="point plan">
+        <img src="assets/turtleplan.png" alt="">
+        <h2>Plan a weekday and a weekend</h2>
+        <p>Answer four quick questions once. Hourtle works out your free time for each kind of day and picks the right plan every morning.</p>
+      </div>
+      <div class="point focus">
+        <img src="assets/turtlework.png" alt="">
+        <h2>Block the apps that steal it</h2>
+        <p>Choose the apps that pull you away. They stay blocked while your timer runs and open again when you pause.</p>
+      </div>
+      <div class="point streak">
+        <img src="assets/turtlecheer.png" alt="">
+        <h2>Keep a streak, win trophies</h2>
+        <p>Thirty minutes a day keeps your streak alive. Miss a day and you can restore it. Milestones earn trophies for the shelf.</p>
       </div>
     </section>
   </main>
 
   <footer>
+    <img class="peek" src="assets/turtlepeek.png" alt="">
     <div class="wrap">
-      <span>© 2026 RepraxSoftware</span>
-      <nav>
-        <a href="privacy">Privacy Policy</a>
-        <a href="terms">Terms of Service</a>
-      </nav>
+      <p class="support">Questions or ideas: <a href="mailto:support@hourtle.com">support@hourtle.com</a></p>
+      <nav><a href="privacy">Privacy policy</a><a href="terms">Terms of service</a></nav>
+      <p class="legal">© 2026 RepraxSoftware. Hourtle is made for iPhone.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var wake = $("wake"), bed = $("bed"), work = $("work"), chores = $("chores");
+
+      function clock(m) {
+        m = m % 1440;
+        var h = Math.floor(m / 60), min = m % 60, am = h < 12;
+        h = h % 12; if (h === 0) h = 12;
+        return h + ":" + (min < 10 ? "0" : "") + min + (am ? " am" : " pm");
+      }
+      function length(m) {
+        var h = Math.floor(m / 60), min = m % 60;
+        if (h && min) return h + " hr " + min + " min";
+        if (h) return h + " hr";
+        return min + " min";
+      }
+
+      function update() {
+        var w = +wake.value, b = +bed.value, wk = +work.value, ch = +chores.value;
+        var awake = b - w;                       // bedtime past midnight is already > 1440
+        var sleep = 1440 - awake;
+        var yours = Math.max(awake - wk - ch, 0);
+        var spent = Math.min(wk + ch, awake);
+
+        $("wake-out").textContent = clock(w);
+        $("bed-out").textContent = clock(b);
+        $("work-out").textContent = length(wk);
+        $("chores-out").textContent = ch ? length(ch) : "none";
+
+        var pct = function (m) { return (m / 1440 * 100) + "%"; };
+        $("b-sleep").style.flexBasis = pct(sleep);
+        $("b-work").style.flexBasis = pct(Math.min(wk, awake));
+        $("b-chores").style.flexBasis = pct(Math.max(spent - wk, 0));
+        $("b-yours").style.flexBasis = pct(yours);
+
+        var r = $("result");
+        if (yours === 0) {
+          r.innerHTML = "That leaves <strong>nothing</strong> for you. Something has to give.";
+        } else {
+          var year = Math.floor(yours * 365 / 60 / 50) * 50;
+          var share = Math.round(yours / 1440 * 100);
+          r.innerHTML = "<strong>" + length(yours) + "</strong> a day is yours. That's " + share + "% of your day, and about <strong>" + year.toLocaleString() + " hours</strong> a year."
+            + "<small>Hourtle helps you actually spend it.</small>";
+        }
+      }
+
+      [wake, bed, work, chores].forEach(function (el) { el.addEventListener("input", update); });
+      // Draw once with an empty bar so the first fill is the page's one moment of motion.
+      update();
+    })();
+  </script>
 </body>
 </html>
