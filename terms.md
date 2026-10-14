@@ -12,7 +12,11 @@ Hourtle is a planning and time-tracking tool. You may use it for your own person
 
 ## Your account
 
-You need to sign in with Sign in with Apple to use the app. You can delete your account at any time in Settings.
+You can use the app without an account. Signing in with Sign in with Apple is optional: it saves your plans and progress to our server, so they come back on another device or after you reinstall the app.
+
+If you do not sign in, your plans and progress are kept only on your device. They are lost if you delete the app or lose the device, and we cannot bring them back.
+
+If you have an account, you can delete it at any time in Settings.
 
 ## Subscription and free trial
 
@@ -47,7 +51,7 @@ We may change the app or these terms. If we make a significant change to the ter
 
 ## Ending use
 
-You can stop using the app and delete your account at any time. We may suspend access for anyone who misuses the app.
+You can stop using the app at any time, and delete your account if you have one. We may suspend access for anyone who misuses the app.
 
 ## Contact
 
