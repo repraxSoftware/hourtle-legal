@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hourtle Support</title>
+  <meta name="description" content="Answers to common questions about Hourtle: your subscription, app blocking, streaks and backups. Or write to support@hourtle.com.">
+  <meta name="apple-itunes-app" content="app-id=6822551344">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1FA85C;
+      --green-edge: #17824A;
+      --green-tint: #E7F6EC;
+      --blue: #2E9BF5;
+      --orange: #FF9A1F;
+      --ink: #1C1C1E;
+      --quiet: #6B6B70;
+      --line: #E3E3E6;
+      --paper: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    header .wrap {
+      max-width: 960px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding-top: 18px; padding-bottom: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 900; color: var(--ink); }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 40px; height: 40px; border-radius: 10px; }
+    header nav { display: flex; gap: 22px; font-size: 0.95rem; }
+    header nav a { color: var(--quiet); }
+
+    .intro { padding-block: 32px 8px; }
+    h1 { font-size: clamp(2.1rem, 5.5vw, 3.1rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 12px; }
+    .lead { font-size: 1.15rem; color: var(--quiet); margin: 0; max-width: 34em; }
+
+    /* The way to reach us: the one card on the page, with the home page's pressed edge. */
+    .contact {
+      display: flex; align-items: center; gap: 18px;
+      margin: 28px 0 8px; padding: 20px 22px;
+      border: 2px solid var(--line); border-radius: 22px; box-shadow: 0 4px 0 var(--line);
+    }
+    .contact img { width: 76px; height: auto; flex: none; }
+    .contact p { margin: 0; }
+    .contact .email { font-size: 1.2rem; }
+    .contact small { display: block; color: var(--quiet); font-size: 0.95rem; margin-top: 2px; }
+
+    h2 { font-size: 1.4rem; font-weight: 900; margin: 48px 0 6px; }
+    h2.subscription { color: var(--green-edge); }
+    h2.blocking { color: var(--blue); }
+    h2.streaks { color: var(--orange); }
+
+    details { border-bottom: 2px solid var(--line); }
+    summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 16px 0; font-weight: 800; font-size: 1.05rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: ""; flex: none; width: 10px; height: 10px;
+      border-right: 3px solid var(--quiet); border-bottom: 3px solid var(--quiet);
+      transform: rotate(45deg) translateY(-3px); transition: transform 0.2s ease;
+    }
+    details[open] summary::after { transform: rotate(225deg) translateY(-2px); }
+    details .answer { padding: 0 0 18px; color: var(--quiet); }
+    details .answer p { margin: 0 0 10px; }
+    details .answer p:last-child { margin-bottom: 0; }
+    .path { color: var(--ink); font-weight: 800; }
+
+    footer { margin-top: 72px; border-top: 2px solid var(--line); padding-block: 28px 36px; }
+    footer .wrap { max-width: 960px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; align-items: center; }
+    footer p { margin: 0; }
+    footer nav { display: flex; gap: 22px; }
+    footer .legal { color: var(--quiet); font-size: 0.9rem; width: 100%; }
+
+    @media (max-width: 480px) {
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact img { width: 64px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      summary::after { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="/"><img src="assets/icon.png" alt="">Hourtle</a>
+      <nav><a href="privacy">Privacy</a><a href="terms">Terms</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>Help with Hourtle</h1>
+      <p class="lead">Answers to the questions people ask most. If yours isn't here, write to us and a real person will reply.</p>
+
+      <div class="contact">
+        <img src="assets/turtlecheer.png" alt="">
+        <p>
+          <a class="email" href="mailto:support@hourtle.com">support@hourtle.com</a>
+          <small>Or in the app, open Settings and tap <span class="path">Send us a message</span>.</small>
+        </p>
+      </div>
+    </section>
+
+    <h2 class="subscription">Your subscription</h2>
+
+    <details>
+      <summary>How does the free trial work?</summary>
+      <div class="answer">
+        <p>New subscribers get two weeks free. You won't be charged until the trial ends, and Hourtle reminds you before it does.</p>
+        <p>If you cancel at least 24 hours before the trial ends, you won't be charged at all.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I cancel?</summary>
+      <div class="answer">
+        <p>Subscriptions are handled by Apple, so you cancel in the Settings app rather than in Hourtle: open <span class="path">Settings</span>, tap your name, then <span class="path">Subscriptions</span>, choose Hourtle and tap <span class="path">Cancel Subscription</span>.</p>
+        <p>You keep everything until the end of the period you've paid for. Deleting the app or your Hourtle account doesn't cancel the subscription.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>I already subscribed, but Hourtle is asking me to pick a plan</summary>
+      <div class="answer">
+        <p>On the plans screen, tap <span class="path">Restore purchases</span>. Hourtle checks with Apple and unlocks your plan.</p>
+        <p>Your subscription belongs to the Apple Account you bought it with. If this iPhone is signed in to a different one, switch to that account in the Settings app, then tap Restore purchases again.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I get a refund?</summary>
+      <div class="answer">
+        <p>Apple handles payments, so refunds go through Apple too. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+      </div>
+    </details>
+
+    <h2 class="blocking">App blocking</h2>
+
+    <details>
+      <summary>Why does Hourtle need Screen Time access?</summary>
+      <div class="answer">
+        <p>Apple only lets an app block other apps through Screen Time, so Hourtle asks for access the first time you turn blocking on.</p>
+        <p>Hourtle can't see which apps you have or how long you use them. When you pick apps to block, iPhone keeps that list private and Hourtle only gets a sealed reference to it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>When are apps blocked, and when do they open again?</summary>
+      <div class="answer">
+        <p>Only while a timer is running, and only for the kinds of time you've switched on under <span class="path">Block during</span>. They open again as soon as you pause or the time runs out, even if Hourtle is closed.</p>
+        <p>With <span class="path">Wait before pausing</span> on, pausing takes 30 seconds and can only be done in Hourtle, so it's harder to give in on a whim.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Blocking stopped working</summary>
+      <div class="answer">
+        <p>Screen Time access may have been turned off. In Hourtle, open the Blocking tab and switch one of the <span class="path">Block during</span> switches off and on again. If access is missing, Hourtle asks for it again.</p>
+        <p>Also make sure you've picked at least one app under <span class="path">Apps to block</span>, and that the kind of time you're timing is switched on.</p>
+      </div>
+    </details>
+
+    <h2 class="streaks">Streaks and your data</h2>
+
+    <details>
+      <summary>How do streaks work?</summary>
+      <div class="answer">
+        <p>Spend at least 30 minutes on your purpose time in a day and your streak grows by one. Hourtle can remind you in the evening if you haven't yet.</p>
+        <p>Every streak trophy you win earns a streak restore. If you miss a day, you have two days to use one and keep your streak going.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I need an account?</summary>
+      <div class="answer">
+        <p>No. Without one, everything stays on your iPhone. Signing in with Apple is optional and backs up your plans, streak and history, so you can get them back on a new phone or after deleting the app.</p>
+        <p>Without an account, deleting the app also deletes your data, so sign in first if you want to keep it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I move to a new iPhone?</summary>
+      <div class="answer">
+        <p>On your old iPhone, open Settings in Hourtle and sign in with Apple, which backs everything up. Then install Hourtle on the new iPhone and sign in with the same Apple Account. Your subscription comes with it automatically.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I delete my account?</summary>
+      <div class="answer">
+        <p>In Hourtle, open <span class="path">Settings</span> and tap <span class="path">Delete account</span>. This permanently deletes your account and everything backed up to it, and clears your iPhone.</p>
+        <p>It doesn't cancel your subscription, which is billed by Apple. See <em>How do I cancel?</em> above.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>I'm not getting reminders</summary>
+      <div class="answer">
+        <p>Check that notifications are on for Hourtle: open the Settings app, tap <span class="path">Notifications</span>, then <span class="path">Hourtle</span>. Focus modes can also hold them back. You can choose which reminders you get in Hourtle's own Settings.</p>
+      </div>
+    </details>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Still stuck? <a href="mailto:support@hourtle.com">support@hourtle.com</a></p>
+      <nav><a href="privacy">Privacy policy</a><a href="terms">Terms of service</a></nav>
+      <p class="legal">© 2026 RepraxSoftware. Hourtle is made for iPhone.</p>
+    </div>
+  </footer>
+</body>
+</html>
