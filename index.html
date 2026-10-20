@@ -123,10 +123,14 @@
 
     .cta { margin: 32px auto 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .button {
-      display: inline-block; padding: 16px 30px; border-radius: 16px;
+      display: inline-block; padding: 16px 30px; border-radius: 16px; white-space: nowrap;
       background: var(--green); color: #fff; font-weight: 800; font-size: 1.05rem;
       box-shadow: 0 5px 0 var(--green-edge);
+      transition: transform 0.08s, box-shadow 0.08s;
     }
+    a.button:hover { background: #22B463; }
+    a.button:active { transform: translateY(5px); box-shadow: 0 0 0 var(--green-edge); }
+    @media (max-width: 340px) { .button { white-space: normal; text-align: center; } }
     .cta .note { margin: 0; color: var(--quiet); font-size: 0.92rem; }
 
     /* Meadow */
@@ -228,8 +232,8 @@
       </div>
 
       <div class="cta">
-        <span class="button">Coming soon to the App Store</span>
-        <p class="note">For iPhone. Free for two weeks, then a small yearly plan.</p>
+        <a class="button" href="https://apps.apple.com/us/app/hourtle-time-management/id6822551344">Download on the App Store</a>
+        <p class="note">For iPhone. Free for two weeks, then a yearly or monthly plan.</p>
       </div>
     </section>
 
@@ -263,7 +267,7 @@
     <img class="peek" src="assets/turtlepeek.png" alt="">
     <div class="wrap">
       <p class="support">Questions or ideas: <a href="mailto:support@hourtle.com">support@hourtle.com</a></p>
-      <nav><a href="support">Help</a><a href="privacy">Privacy policy</a><a href="terms">Terms of service</a></nav>
+      <nav><a href="https://apps.apple.com/us/app/hourtle-time-management/id6822551344">App Store</a><a href="support">Help</a><a href="privacy">Privacy policy</a><a href="terms">Terms of service</a></nav>
       <p class="legal">© 2026 RepraxSoftware. Hourtle is made for iPhone.</p>
     </div>
   </footer>
