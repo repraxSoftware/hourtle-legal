@@ -120,7 +120,7 @@ figcaption b { color: var(--text); font-weight: 600; }
 .lid-in { transform: translateZ(calc(var(--u) * -1.2)) rotateY(180deg); }
 .shine { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.14) 45%, transparent 55%); pointer-events: none; }
 .disc3d { position: absolute; left: calc(var(--u) * 11.5); top: calc(var(--u) * 1.5); width: calc(var(--u) * 40); height: calc(var(--u) * 40); transform-style: preserve-3d; transform: translateZ(calc(var(--u) * .8)); transition: transform .55s cubic-bezier(.3,.7,.2,1); }
-.disc-face { position: absolute; inset: 0; border-radius: 50%; background: url(upload/3_ICARUS_cd-disc.png) 50% 50% / 100% 100% no-repeat; box-shadow: 0 0 0 1px rgba(255,255,255,.18); }
+.disc-face { position: absolute; inset: 0; border-radius: 50%; background: url(print/ICARUS_D_disc.png) 50% 50% / 115% 115% no-repeat; box-shadow: 0 0 0 1px rgba(255,255,255,.18); }
 .disc-face.spin { animation: spin 7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .hub { position: absolute; left: calc(var(--u) * 26); top: calc(var(--u) * 16); width: calc(var(--u) * 11); height: calc(var(--u) * 11); border-radius: 50%; border: calc(var(--u) * .5) solid rgba(255,255,255,.35); background: radial-gradient(circle, rgba(255,255,255,.28) 0 28%, rgba(255,255,255,.08) 30% 100%); transform: translateZ(calc(var(--u) * .4)); }
@@ -212,21 +212,21 @@ footer { border-top: 1px solid var(--rule); padding-block: 20px 36px; color: var
       <div class="row">
         <figure>
           <div class="case" id="v-closed"></div>
-          <figcaption><b>Closed.</b> The front cover sits in the lid. The same artwork sits behind the disc, so it shows on the left like an extension of the cover.</figcaption>
+          <figcaption><b>Closed.</b> The booklet's cover sits in the lid. The black strip of the inside card shows on the left, like a real jewel case.</figcaption>
         </figure>
         <figure>
           <div class="open">
             <div class="case nohook" id="v-lid"></div>
             <div class="case" id="v-tray"></div>
           </div>
-          <figcaption><b>Opened.</b> Left: the inner left page. Right: the cover artwork again, under the disc. <button type="button" id="disc-btn" style="margin-top:6px;font-size:13px;padding:5px 10px">Take the disc out</button></figcaption>
+          <figcaption><b>Opened.</b> Left: the booklet's back page. Right: the inside card under the disc. <button type="button" id="disc-btn" style="margin-top:6px;font-size:13px;padding:5px 10px">Take the disc out</button></figcaption>
         </figure>
         <figure>
           <div style="display:flex;gap:calc(var(--mm)*2);align-items:flex-start">
             <div class="case" id="v-back"></div>
             <div id="v-spine"></div>
           </div>
-          <figcaption><b>Back.</b> The back cover.</figcaption>
+          <figcaption><b>Back.</b> The back cover, with its 4 mm spine shown beside it. The spine folds round the side of the case.</figcaption>
         </figure>
       </div>
     </section>
@@ -297,6 +297,16 @@ const spine = (e = E0) => box(4, 38, e, "#0b0a0a", `
     <div style="writing-mode:vertical-rl;font-weight:600;font-size:${MM(1.9)};letter-spacing:.2em;color:#ee242e;white-space:nowrap">MIINII · <span style="color:#fff">ICARUS</span></div>
   </div>`);
 
+const tray = (e = E0) => box(53, 38, e, "#0b0a0a", `
+  ${cover("bg-tray.jpg", "60% 40%")}
+  <div class="ph" style="background:linear-gradient(to top,rgba(11,10,10,.7) 0,transparent ${MM(9 + e.b)})"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:${MM(7.2 + e.l)};background:#0b0a0a;border-right:1px solid #3a0a0e">
+    <div style="position:absolute;left:${MM(e.l)};right:0;top:${MM(e.t)};bottom:${MM(e.b)};display:flex;align-items:center;justify-content:center">
+      <div style="writing-mode:vertical-rl;font-weight:600;font-size:${MM(1.9)};letter-spacing:.3em;color:#ee242e">MIINII</div>
+    </div>
+  </div>
+  <img src="moto.png" alt="miinii reclining on a black sport bike" style="position:absolute;left:${MM(10 + e.l)};bottom:${MM(2.5 + e.b)};width:${MM(40)}">`);
+
 const discArt = (b = 0) => {
   const d = 40 + 2 * b;
   return `
@@ -320,6 +330,7 @@ const PIECES = {
        html: () => `<div style="display:flex">${liner({ l: BLEED, t: BLEED, r: 0, b: BLEED })}${front({ l: 0, t: BLEED, r: BLEED, b: BLEED })}</div>` },
   B: { file: "ICARUS_B_back-cover.png", w: 53, h: 38,
        html: () => `<div style="display:flex">${back({ l: BLEED, t: BLEED, r: 0, b: BLEED })}${spine({ l: 0, t: BLEED, r: BLEED, b: BLEED })}</div>` },
+  C: { file: "ICARUS_C_inside-card.png", w: 53, h: 38, html: () => tray(ALL(BLEED)) },
   D: { file: "ICARUS_D_disc.png", w: 40, h: 40, html: () => disc(BLEED) },
 };
 
@@ -327,6 +338,7 @@ const PIECES = {
 const FILES = [
   { id: "A", tag: "A · Booklet outside", title: "Front cover + back page", file: "ICARUS_A_booklet-outside.png", meta: "80 × 40 mm · folds to 40 × 40", px: "1185 × 634 px", desc: "Right half is the front cover. Left half is the page you see when the case opens." },
   { id: "B", tag: "B · Back cover", title: "Back cover with spine", file: "ICARUS_B_back-cover.png", meta: "53 × 38 mm · 4 mm spine on the right", px: "813 × 606 px", desc: "Shows through the back of the case. The spine folds round the hinge side." },
+  { id: "C", tag: "C · Inside card", title: "Under the disc", file: "ICARUS_C_inside-card.png", meta: "53 × 38 mm", px: "813 × 606 px", desc: "Sits in the tray under the disc. The black strip goes on the hinge side." },
   { id: "D", tag: "D · Disc", title: "Disc label", file: "ICARUS_D_disc.png", meta: "⌀ 40 mm · centre hole", px: "634 × 634 px", desc: "Transparent outside the circle and in the centre hole, ready to cut or UV print.", round: true },
 ];
 
@@ -359,19 +371,15 @@ document.getElementById("file-grid").innerHTML = FILES.map(f => `
   </article>`;
 
 const put = (id, html, css) => { const el = document.getElementById(id); el.innerHTML = html; if (css) Object.assign(el.style, css); };
-// The seller's build: the cover artwork is repeated behind the disc, so it also shows beside the lid when closed.
-const IMG = { front: "upload/1_ICARUS_front-cover.png", liner: "upload/2_ICARUS_inner-left.png", disc: "upload/3_ICARUS_cd-disc.png", back: "upload/4_ICARUS_back-cover.png" };
-const img = (src, w, h, extra = "") => `<img src="${src}" alt="" style="display:block;width:${MM(w)};height:${MM(h)};${extra}">`;
-const trayArt = (w, h) => `<div style="width:${MM(w)};height:${MM(h)};background:#0b0a0a url(${IMG.front}) 50% 50% / cover no-repeat"></div>`;
 put("v-closed", `
-  <div class="panel" style="left:${MM(2)};top:${MM(2.5)};width:${MM(49)};height:${MM(38)};">${trayArt(49, 38)}</div>
-  <div class="panel" style="right:${MM(2)};top:${MM(1.5)};box-shadow:-2px 0 6px rgba(0,0,0,.5)">${img(IMG.front, 40, 40)}</div>`);
-put("v-lid", `<div class="panel" style="left:${MM(1.5)};top:${MM(1.5)}">${img(IMG.liner, 40, 40)}</div>`);
+  <div class="panel" style="left:${MM(2)};top:${MM(2.5)};width:${MM(49)};height:${MM(38)};">${tray()}</div>
+  <div class="panel" style="right:${MM(2)};top:${MM(1.5)};box-shadow:-2px 0 6px rgba(0,0,0,.5)">${front()}</div>`);
+put("v-lid", `<div class="panel" style="left:${MM(1.5)};top:${MM(1.5)}">${liner()}</div>`);
 put("v-tray", `
-  <div class="panel" style="left:0;top:${MM(2.5)}">${trayArt(53, 38)}</div>
-  <div class="disc" id="disc" style="left:${MM(11.5)};top:${MM(1.5)};width:${MM(40)};height:${MM(40)};box-shadow:0 2px 10px rgba(0,0,0,.6)">${img(IMG.disc, 40, 40, "border-radius:50%")}</div>`);
-put("v-back", `<div class="panel" style="left:${MM(2)};top:${MM(2.5)}">${img(IMG.back, 49, 38)}</div>`);
-document.getElementById("v-spine").remove();
+  <div class="panel" style="left:0;top:${MM(2.5)}">${tray()}</div>
+  <div class="disc" id="disc" style="left:${MM(11.5)};top:${MM(1.5)};width:${MM(40)};height:${MM(40)};box-shadow:0 2px 10px rgba(0,0,0,.6)">${discArt()}</div>`);
+put("v-back", `<div class="panel" style="left:${MM(2)};top:${MM(2.5)}">${back()}</div>`);
+put("v-spine", spine(), { marginTop: MM(2.5) });
 
 const discBtn = document.getElementById("disc-btn");
 discBtn.addEventListener("click", () => {
@@ -391,13 +399,18 @@ addEventListener("resize", fit); fit();
 
 // 3D case. Art comes straight from the print files, cropped to the cut line (3 mm bleed off).
 const U = v => `calc(var(--u)*${v})`;
+const crop = (el, file, imgW, imgH, x, y, w, h, box) => {
+  Object.assign(el.style, { left: U(box[0]), top: U(box[1]), width: U(w), height: U(h),
+    backgroundImage: `url(print/${file})`,
+    backgroundSize: `${imgW / w * 100}% ${imgH / h * 100}%`,
+    backgroundPosition: `${imgW === w ? 50 : x / (imgW - w) * 100}% ${imgH === h ? 50 : y / (imgH - h) * 100}%` });
+};
 const g = id => document.getElementById(id);
-const fill = (el, src, box, w, h, size = "100% 100%") => Object.assign(el.style, { left: U(box[0]), top: U(box[1]), width: U(w), height: U(h), backgroundImage: `url(${src})`, backgroundSize: size, backgroundPosition: "50% 50%" });
-fill(g("f-front"), IMG.front, [11.5, 1.5], 40, 40);
-fill(g("f-liner"), IMG.liner, [1.5, 1.5], 40, 40);
-fill(g("f-back"), IMG.back, [2, 2.5], 49, 38);
-fill(g("f-tray"), IMG.front, [0, 2.5], 53, 38, "cover");
-g("f-spine").remove();
+crop(g("f-front"), "ICARUS_A_booklet-outside.png", 86, 46, 43, 3, 40, 40, [11.5, 1.5]);
+crop(g("f-liner"), "ICARUS_A_booklet-outside.png", 86, 46, 3, 3, 40, 40, [1.5, 1.5]);
+crop(g("f-back"), "ICARUS_B_back-cover.png", 59, 44, 3, 3, 49, 38, [4, 2.5]);
+crop(g("f-spine"), "ICARUS_B_back-cover.png", 59, 44, 52, 3, 4, 38, [.5, 2.5]);
+crop(g("f-tray"), "ICARUS_C_inside-card.png", 59, 44, 3, 3, 53, 38, [0, 2.5]);
 
 const stage = g("stage"), obj = g("obj"), lid = g("lid"), disc3d = g("disc3d"), discface = g("discface"), discBtn3 = g("discout3d"), lidr = g("lidr"), openBtn = g("open3d"), flipBtn = g("flip3d");
 const VIEW = { ry: -28, rx: 12 };
