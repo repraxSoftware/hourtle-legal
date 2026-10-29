@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<title>ICARUS Mini CD Keychain</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap">
+<style>
+/* Layout: a print-shop job ticket at night. Sticky nav, preview of the finished case, then the files. Single dark look to match miinii's brand. */
+:root {
+  --ink: #0b0a0a;
+  --sheet: #151112;
+  --raise: #1d1718;
+  --rule: #2e2425;
+  --text: #f1e8e6;
+  --muted: #a99b98;
+  --red: #ee242e;
+  --ember: #ff7a5c;
+  --display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Space Mono", ui-monospace, Menlo, monospace;
+  --mm: 6px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--ink); color: var(--text); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+a { color: var(--ember); }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 1120px; margin: 0 auto; }
+
+nav.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: rgba(11,10,10,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+nav.top .inner { display: flex; align-items: center; gap: 18px; padding-block: 10px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-size: 19px; letter-spacing: .08em; color: var(--text); text-decoration: none; margin-right: auto; }
+.brand span { color: var(--red); }
+nav.top .links { display: flex; gap: 4px; flex-wrap: wrap; }
+nav.top .links a { color: var(--muted); text-decoration: none; font-size: 14px; padding: 6px 10px; border-radius: 6px; }
+nav.top .links a:hover { color: var(--text); background: var(--sheet); }
+
+main { display: grid; gap: 64px; padding-block: 40px 72px; }
+header.hero { display: grid; gap: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+h1 { font-family: var(--display); font-weight: 500; font-size: clamp(40px, 7vw, 72px); line-height: 1; margin: 0; letter-spacing: .04em; text-wrap: balance; }
+h1 em { color: var(--red); font-style: italic; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 28px; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 62ch; margin: 0; font-size: 16px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.fact { font-family: var(--mono); font-size: 12px; border: 1px solid var(--rule); border-radius: 999px; padding: 4px 11px; color: var(--muted); }
+.fact b { color: var(--text); font-weight: 400; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 4px; }
+
+section { display: grid; gap: 22px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
+.sec-head p { margin: 0; color: var(--muted); font-size: 14px; max-width: 60ch; }
+
+button, .btn { font: 500 14px var(--body); color: var(--text); background: var(--sheet); border: 1px solid var(--rule); border-radius: 7px; padding: 8px 14px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+button:hover, .btn:hover { border-color: var(--muted); }
+button:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+.btn.primary, button.primary { background: var(--red); border-color: var(--red); color: #fff; }
+.btn.primary:hover, button.primary:hover { background: #d81d26; }
+button[aria-pressed="true"] { border-color: var(--red); color: var(--ember); }
+.quiet { font-size: 13px; color: var(--muted); }
+.dl-only { display: none !important; }
+.can-dl .dl-only { display: inline-flex !important; }
+.status { font-size: 13px; color: var(--ember); min-height: 1em; }
+
+.row { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-start; overflow-x: auto; padding: 18px 2px 6px; }
+figure { margin: 0; display: grid; gap: 10px; justify-items: start; }
+figcaption { font-size: 13px; color: var(--muted); max-width: 46ch; }
+figcaption b { color: var(--text); font-weight: 600; }
+.zoom { display: flex; gap: 6px; }
+.zoom button { padding: 6px 12px; font-size: 13px; }
+
+.case { position: relative; width: calc(var(--mm) * 53); height: calc(var(--mm) * 43); border-radius: calc(var(--mm) * 1.2); background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.28); box-shadow: inset 0 0 0 calc(var(--mm) * .6) rgba(255,255,255,.05); flex: none; }
+.case::before { content: ""; position: absolute; left: 50%; top: calc(var(--mm) * -4); width: calc(var(--mm) * 5); height: calc(var(--mm) * 4.4); transform: translateX(-50%); border: 1px solid rgba(255,255,255,.28); border-bottom: 0; border-radius: calc(var(--mm) * 2.5) calc(var(--mm) * 2.5) 0 0; }
+.case.nohook::before { display: none; }
+.open { display: flex; gap: 2px; flex: none; }
+.panel { position: absolute; overflow: hidden; }
+.p { position: relative; overflow: hidden; flex: none; }
+.ph { position: absolute; inset: 0; }
+.bin { position: absolute; inset: -2%; font-family: var(--mono); font-size: calc(var(--mm) * 1.35); line-height: 1.22; color: #fff; opacity: .085; word-break: break-all; letter-spacing: .05em; pointer-events: none; }
+.t-disp { font-family: var(--display); font-weight: 500; }
+.t-mm { font-size: calc(var(--mm) * 1.85); line-height: 1.35; }
+.logo { display: block; }
+.logo path { fill: var(--red); }
+.logo.light path { fill: #fff; }
+.disc { position: absolute; border-radius: 50%; overflow: hidden; transition: transform .45s cubic-bezier(.2,.7,.2,1), opacity .45s; }
+.disc.out { transform: translate(calc(var(--mm) * 30), calc(var(--mm) * -6)) rotate(40deg); opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .disc { transition: none; } }
+
+/* 3D case: every length is in --u (px per mm). Case 53 × 43 × 8 mm, hinge on the left. */
+.stage { --u: 7px; position: relative; height: calc(var(--u) * 80); min-height: 300px; perspective: calc(var(--u) * 240); display: grid; place-items: center; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; background: radial-gradient(ellipse at 50% 62%, #2b0a0c 0, #140b0c 45%, var(--ink) 80%); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+.stage.drag { cursor: grabbing; }
+.obj { position: relative; width: calc(var(--u) * 53); height: calc(var(--u) * 43); transform-style: preserve-3d; transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.obj.live, .lid.live { transition: none; }
+.obj > div, .lid > div { position: absolute; }
+.face { left: 0; top: 0; width: 100%; height: 100%; transform-style: preserve-3d; }
+.clear { background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.025) 42%, rgba(255,255,255,.07)); border: 1px solid rgba(255,255,255,.3); border-radius: calc(var(--u) * 1); }
+.art { position: absolute; background-repeat: no-repeat; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.back { transform: translateZ(calc(var(--u) * -4)) rotateY(180deg); }
+.side-l, .side-r { width: calc(var(--u) * 8); left: calc(var(--u) * 22.5); }
+.side-l { transform: rotateY(-90deg) translateZ(calc(var(--u) * 26.5)); }
+.side-r { transform: rotateY(90deg) translateZ(calc(var(--u) * 26.5)); }
+.side-t, .side-b { height: calc(var(--u) * 8); top: calc(var(--u) * 17.5); }
+.side-t { transform: rotateX(90deg) translateZ(calc(var(--u) * 21.5)); }
+.side-b { transform: rotateX(-90deg) translateZ(calc(var(--u) * 21.5)); }
+.tray { background: rgba(255,255,255,.03); }
+.hook { left: calc(var(--u) * 24); top: calc(var(--u) * -4.6); width: calc(var(--u) * 5); height: calc(var(--u) * 5); border: calc(var(--u) * .8) solid rgba(255,255,255,.32); border-bottom-color: transparent; border-radius: 50% 50% 0 0; transform: translateZ(calc(var(--u) * -1)); }
+.lid { left: 0; top: 0; width: 100%; height: 100%; transform-style: preserve-3d; transform-origin: 0 50%; transform: translateZ(calc(var(--u) * 4)); transition: transform 1s cubic-bezier(.3,.7,.2,1); }
+.lid-in { transform: translateZ(calc(var(--u) * -1.2)) rotateY(180deg); }
+.shine { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.14) 45%, transparent 55%); pointer-events: none; }
+.disc3d { position: absolute; left: calc(var(--u) * 11.5); top: calc(var(--u) * 1.5); width: calc(var(--u) * 40); height: calc(var(--u) * 40); transform-style: preserve-3d; transform: translateZ(calc(var(--u) * .8)); transition: transform .55s cubic-bezier(.3,.7,.2,1); }
+.disc-face { position: absolute; inset: 0; border-radius: 50%; background: url(print/ICARUS_D_disc.png) 50% 50% / 115% 115% no-repeat; box-shadow: 0 0 0 1px rgba(255,255,255,.18); }
+.disc-face.spin { animation: spin 7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hub { position: absolute; left: calc(var(--u) * 26); top: calc(var(--u) * 16); width: calc(var(--u) * 11); height: calc(var(--u) * 11); border-radius: 50%; border: calc(var(--u) * .5) solid rgba(255,255,255,.35); background: radial-gradient(circle, rgba(255,255,255,.28) 0 28%, rgba(255,255,255,.08) 30% 100%); transform: translateZ(calc(var(--u) * .4)); }
+@media (prefers-reduced-motion: reduce) { .obj, .lid { transition: none; } .disc3d { transition: none; } .disc-face.spin { animation: none; } }
+.controls3d { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.lidr { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+.lidr input { width: 160px; accent-color: var(--red); }
+
+.files { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.file { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.file .thumb { background: var(--raise); aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; padding: 18px; border-bottom: 1px solid var(--rule); overflow: hidden; min-width: 0; }
+.file .thumb img { width: auto; height: auto; max-width: 100%; max-height: 100%; min-width: 0; object-fit: contain; display: block; box-shadow: 0 6px 20px rgba(0,0,0,.45); }
+.file .thumb.round img { box-shadow: none; filter: drop-shadow(0 6px 14px rgba(0,0,0,.5)); }
+.file .thumb.doc { font-family: var(--display); font-size: 40px; color: var(--muted); }
+.file .body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
+.file .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ember); }
+.file h3 { margin: 0; font-size: 17px; font-weight: 600; }
+.file p { margin: 0; font-size: 14px; color: var(--muted); }
+.meta { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.actions .btn, .actions button { font-size: 13px; padding: 7px 12px; }
+
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th { font-weight: 500; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+ul.notes { display: grid; gap: 6px; margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; max-width: 75ch; }
+ul.notes b { color: var(--text); font-weight: 600; }
+footer { border-top: 1px solid var(--rule); padding-block: 20px 36px; color: var(--muted); font-size: 13px; }
+</style>
+
+<nav class="top gutter" aria-label="Sections">
+  <div class="inner">
+    <a class="brand" href="#top">ICARUS <span>·</span> keychain</a>
+    <div class="links">
+      <a href="#files">Files</a>
+      <a href="#preview">3D preview</a>
+    </div>
+    <span class="status" role="status" aria-live="polite"></span>
+    <button type="button" class="primary dl-only" data-zip>Download all</button>
+  </div>
+</nav>
+
+<main class="gutter" id="top">
+  <div class="inner" style="display:grid;gap:56px">
+    <section id="files" aria-labelledby="h-files">
+      <div class="sec-head">
+        <h2 id="h-files">Files</h2>
+        <p>Use the PNGs for a print shop or UV printer. Use the PDF sheet to print everything at home on one US Letter page.</p>
+      </div>
+      <div class="files" id="file-grid"></div>
+    </section>
+
+    <section id="preview" aria-labelledby="h-preview">
+      <div class="sec-head">
+        <h2 id="h-preview">What it looks like</h2>
+        <p>Drag the case to turn it. Open it to see the booklet, then lift the disc out.</p>
+      </div>
+      <div class="stage" id="stage" role="img" aria-label="3D model of the ICARUS keychain case. Drag to turn it; use the buttons below to open it or show the back.">
+        <div class="obj" id="obj">
+          <div class="hook" aria-hidden="true"></div>
+          <div class="face clear back"><div class="art" id="f-back"></div></div>
+          <div class="face clear side-l"><div class="art" id="f-spine"></div></div>
+          <div class="face clear side-r"></div>
+          <div class="face clear side-t"></div>
+          <div class="face clear side-b"></div>
+          <div class="face tray"><div class="art" id="f-tray"></div><div class="hub" aria-hidden="true"></div><div class="disc3d" id="disc3d"><div class="disc-face" id="discface"></div></div></div>
+          <div class="lid" id="lid">
+            <div class="face clear lid-out"><div class="art" id="f-front"></div><div class="shine"></div></div>
+            <div class="face clear lid-in"><div class="art" id="f-liner"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls3d">
+        <button type="button" class="primary" id="open3d">Open the case</button>
+        <label class="lidr" for="lidr">Lid <input type="range" id="lidr" min="0" max="160" step="1" value="0"></label>
+        <button type="button" id="discout3d">Take the disc out</button>
+        <button type="button" id="flip3d">Show the back</button>
+        <button type="button" id="reset3d">Reset view</button>
+      </div>
+      <div class="sec-head" style="margin-top:12px">
+        <h3 style="margin:0;font-size:16px;font-weight:600">Flat views</h3>
+        <div class="zoom" role="group" aria-label="Flat view size">
+          <button type="button" id="z-fit" aria-pressed="true">Fit</button>
+          <button type="button" id="z-big" aria-pressed="false">Large</button>
+        </div>
+      </div>
+      <div class="row">
+        <figure>
+          <div class="case" id="v-closed"></div>
+          <figcaption><b>Closed.</b> The booklet's cover sits in the lid. The black strip of the inside card shows on the left, like a real jewel case.</figcaption>
+        </figure>
+        <figure>
+          <div class="open">
+            <div class="case nohook" id="v-lid"></div>
+            <div class="case" id="v-tray"></div>
+          </div>
+          <figcaption><b>Opened.</b> Left: the booklet's back page. Right: the inside card under the disc. <button type="button" id="disc-btn" style="margin-top:6px;font-size:13px;padding:5px 10px">Take the disc out</button></figcaption>
+        </figure>
+        <figure>
+          <div style="display:flex;gap:calc(var(--mm)*2);align-items:flex-start">
+            <div class="case" id="v-back"></div>
+            <div id="v-spine"></div>
+          </div>
+          <figcaption><b>Back.</b> The back cover, with its 4 mm spine shown beside it. The spine folds round the side of the case.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="gutter"><div class="inner">Artwork for miinii's single ICARUS · <a href="https://officialmiinii.com" target="_blank" rel="noopener">officialmiinii.com</a> · @officialmiinii</div></footer>
+
+<script>
+// Piece renderers shared by the preview page and the print export.
+// Every renderer takes an edge object {l,t,r,b} in mm: how much bleed to add on each side.
+const MM = v => `calc(var(--mm)*${v})`;
+const E0 = { l: 0, t: 0, r: 0, b: 0 };
+const ALL = n => ({ l: n, t: n, r: n, b: n });
+const LOGO = `<svg class="logo" viewBox="0 0 850 400" aria-label="MIINII"><path d="M0 400V0H78L112 205L146 0H224V400H158V154L131 330H93L66 154V400Z"/><path d="M250 0H320V400H250Z M346 0H416V400H346Z"/><path d="M442 400V0H514L590 227V0H658V400H586L510 173V400Z"/><path d="M684 0H754V400H684Z M780 0H850V400H780Z"/></svg>`;
+const LOGO_W = LOGO.replace('class="logo"', 'class="logo light"');
+const BYTES = [..."ICARUS"].map(c => c.charCodeAt(0).toString(2).padStart(8, "0")).join(" ");
+const BIN = `<div class="bin" aria-hidden="true">${(BYTES + " ").repeat(70)}</div>`;
+
+const box = (w, h, e, bg, inner) =>
+  `<div class="p" style="width:${MM(w + e.l + e.r)};height:${MM(h + e.t + e.b)};background:${bg}">${inner}</div>`;
+const cover = (src, pos) => `<img class="ph" src="${src}" alt="" style="width:100%;height:100%;object-fit:cover${pos ? ";object-position:" + pos : ""}">`;
+
+// EAN-8 layout whose eight digits are lowercase "m" in ASCII (01101101).
+function barcode() {
+  const d = "m".charCodeAt(0).toString(2).padStart(8, "0").split("").map(Number);
+  const L = ["0001101","0011001"], R = ["1110010","1100110"];
+  const m = "101" + d.slice(0,4).map(x => L[x]).join("") + "01010" + d.slice(4).map(x => R[x]).join("") + "101";
+  const ox = 7, tall = i => i < 3 || (i >= 31 && i < 36) || i >= 64;
+  let s = "";
+  [...m].forEach((b, i) => { if (b === "1") s += `<rect x="${ox+i}" y="2" width="1" height="${tall(i) ? 46 : 40}" fill="#0b0a0a"/>`; });
+  const tx = (x, v) => `<text x="${x}" y="53" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="1.5" text-anchor="middle" fill="#0b0a0a">${v}</text>`;
+  s += tx(ox + 17, d.slice(0,4).join("")) + tx(ox + 50, d.slice(4).join(""));
+  return `<svg viewBox="0 0 81 56" style="display:block;width:100%">${s}</svg>`;
+}
+
+const front = (e = E0) => box(40, 40, e, "#0b0a0a", `
+  <img class="ph" src="cover.jpg" alt="Winged silhouette reaching toward a bright light through red haze" style="width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;left:${MM(2.6 + e.l)};top:${MM(2.6 + e.t)};width:${MM(11)}">${LOGO_W}</div>
+  <div class="t-disp" style="position:absolute;right:${MM(2.6 + e.r)};bottom:${MM(2.2 + e.b)};font-size:${MM(5)};letter-spacing:.12em;color:#fff">ICARUS</div>`);
+
+const liner = (e = E0) => box(40, 40, e, "#0b0a0a", `
+  ${cover("bg-liner.jpg")}
+  ${BIN}
+  <div style="position:absolute;left:${MM(2.6 + e.l)};top:${MM(2.6 + e.t)};right:${MM(2.6 + e.r)};bottom:${MM(2.6 + e.b)};display:flex;flex-direction:column;color:#efdcd8">
+    <div class="t-disp" style="font-size:${MM(2.85)};line-height:1.15;color:#fff;white-space:nowrap;margin:${MM(.6)} 0 ${MM(2)}">Software engineer by day.<br>Pop star by night.</div>
+    <div class="t-mm" style="max-width:${MM(34)}">Daughter of a Vietnamese immigrant. Piano at four, first song at eight. Software engineer at 21, still chasing the dream after hours. Every late night after the 9-to-5 went into this song.</div>
+    <div style="margin-top:auto;display:flex;align-items:end;justify-content:space-between">
+      <div class="t-disp" style="font-style:italic;font-size:${MM(3)};color:#ffd9d4">xoxo, miinii</div>
+      <img src="kiss.png" alt="" style="width:${MM(8)}">
+    </div>
+  </div>`);
+
+const back = (e = E0) => box(49, 38, e, "#0b0a0a", `
+  ${cover("bg-back.jpg")}
+  ${BIN}
+  <div style="position:absolute;left:${MM(2.6 + e.l)};top:${MM(2.6 + e.t)};right:${MM(2.6 + e.r)};bottom:${MM(2.6 + e.b)};color:#ffd9d4">
+    <div style="width:${MM(14)}">${LOGO_W}</div>
+    <div class="t-mm" style="margin-top:${MM(2.2)};letter-spacing:.1em;color:#fff">01&nbsp;&nbsp;ICARUS</div>
+    <div class="t-mm" style="margin-top:${MM(1.2)}">Software engineer by day.<br>Pop star by night.</div>
+    <div class="t-mm" style="position:absolute;left:0;bottom:0;line-height:1.3">@officialmiinii<br>officialmiinii.com<br><span style="color:#ff9a90">℗ 2026 miinii</span></div>
+    <div style="position:absolute;right:0;bottom:0;width:${MM(11)};background:#fff;padding:${MM(.5)} ${MM(.6)} ${MM(.3)}">${barcode()}</div>
+  </div>`);
+
+const spine = (e = E0) => box(4, 38, e, "#0b0a0a", `
+  <div style="position:absolute;left:${MM(e.l)};top:${MM(e.t)};width:${MM(4)};height:${MM(38)};display:flex;align-items:center;justify-content:center">
+    <div style="writing-mode:vertical-rl;font-weight:600;font-size:${MM(1.9)};letter-spacing:.2em;color:#ee242e;white-space:nowrap">MIINII · <span style="color:#fff">ICARUS</span></div>
+  </div>`);
+
+const tray = (e = E0) => box(53, 38, e, "#0b0a0a", `
+  ${cover("bg-tray.jpg", "60% 40%")}
+  <div class="ph" style="background:linear-gradient(to top,rgba(11,10,10,.7) 0,transparent ${MM(9 + e.b)})"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:${MM(7.2 + e.l)};background:#0b0a0a;border-right:1px solid #3a0a0e">
+    <div style="position:absolute;left:${MM(e.l)};right:0;top:${MM(e.t)};bottom:${MM(e.b)};display:flex;align-items:center;justify-content:center">
+      <div style="writing-mode:vertical-rl;font-weight:600;font-size:${MM(1.9)};letter-spacing:.3em;color:#ee242e">MIINII</div>
+    </div>
+  </div>
+  <img src="moto.png" alt="miinii reclining on a black sport bike" style="position:absolute;left:${MM(10 + e.l)};bottom:${MM(2.5 + e.b)};width:${MM(40)}">`);
+
+const discArt = (b = 0) => {
+  const d = 40 + 2 * b;
+  return `
+  <div style="position:absolute;inset:0;background:#2a0406 url(bg-tray.jpg) 50% 53% / ${300 * d / 40}% auto no-repeat"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(circle,transparent ${MM(11 + b * .5)},rgba(11,10,10,.45) ${MM(20 + b)})"></div>
+  <div style="position:absolute;left:50%;top:50%;width:${MM(5)};height:${MM(5)};transform:translate(-50%,-50%);border-radius:50%;background:#0b0a0a;box-shadow:0 0 0 ${MM(1.6)} rgba(255,255,255,.18)"></div>
+  <div class="t-disp" style="position:absolute;left:0;right:0;bottom:${MM(6.4 + b)};text-align:center;font-size:${MM(3.4)};letter-spacing:.18em;color:#fff">ICARUS</div>
+  <div style="position:absolute;left:0;right:0;top:${MM(6 + b)};display:flex;justify-content:center"><div style="width:${MM(8)}">${LOGO_W}</div></div>`;
+};
+
+const disc = (b = 0) => {
+  const d = 40 + 2 * b;
+  const mask = `radial-gradient(circle, transparent ${MM(2)}, #000 ${MM(2.05)}, #000 ${MM(d / 2 - .05)}, transparent ${MM(d / 2)})`;
+  return `<div class="p" style="width:${MM(d)};height:${MM(d)};-webkit-mask:${mask};mask:${mask}">${discArt(b)}</div>`;
+};
+
+// Full print pieces: bleed on every outside edge, none across folds.
+const BLEED = 3;
+const PIECES = {
+  A: { file: "ICARUS_A_booklet-outside.png", w: 80, h: 40,
+       html: () => `<div style="display:flex">${liner({ l: BLEED, t: BLEED, r: 0, b: BLEED })}${front({ l: 0, t: BLEED, r: BLEED, b: BLEED })}</div>` },
+  B: { file: "ICARUS_B_back-cover.png", w: 53, h: 38,
+       html: () => `<div style="display:flex">${back({ l: BLEED, t: BLEED, r: 0, b: BLEED })}${spine({ l: 0, t: BLEED, r: BLEED, b: BLEED })}</div>` },
+  C: { file: "ICARUS_C_inside-card.png", w: 53, h: 38, html: () => tray(ALL(BLEED)) },
+  D: { file: "ICARUS_D_disc.png", w: 40, h: 40, html: () => disc(BLEED) },
+};
+
+
+const FILES = [
+  { id: "A", tag: "A · Booklet outside", title: "Front cover + back page", file: "ICARUS_A_booklet-outside.png", meta: "80 × 40 mm · folds to 40 × 40", px: "1185 × 634 px", desc: "Right half is the front cover. Left half is the page you see when the case opens." },
+  { id: "B", tag: "B · Back cover", title: "Back cover with spine", file: "ICARUS_B_back-cover.png", meta: "53 × 38 mm · 4 mm spine on the right", px: "813 × 606 px", desc: "Shows through the back of the case. The spine folds round the hinge side." },
+  { id: "C", tag: "C · Inside card", title: "Under the disc", file: "ICARUS_C_inside-card.png", meta: "53 × 38 mm", px: "813 × 606 px", desc: "Sits in the tray under the disc. The black strip goes on the hinge side." },
+  { id: "D", tag: "D · Disc", title: "Disc label", file: "ICARUS_D_disc.png", meta: "⌀ 40 mm · centre hole", px: "634 × 634 px", desc: "Transparent outside the circle and in the centre hole, ready to cut or UV print.", round: true },
+];
+
+document.getElementById("file-grid").innerHTML = FILES.map(f => `
+  <article class="file">
+    <div class="thumb${f.round ? " round" : ""}"><img src="print/${f.file}" alt="${f.tag} print file" loading="lazy"></div>
+    <div class="body">
+      <div class="tag">${f.tag}</div>
+      <h3>${f.title}</h3>
+      <div class="meta">${f.meta} · ${f.px}</div>
+      <p>${f.desc}</p>
+      <div class="actions">
+        <button type="button" class="primary dl-only" data-file="print/${f.file}">Download PNG</button>
+        <a class="btn" href="print/${f.file}" target="_blank" rel="noopener">Open full size</a>
+      </div>
+    </div>
+  </article>`).join("") + `
+  <article class="file">
+    <div class="thumb doc">PDF</div>
+    <div class="body">
+      <div class="tag">Print sheet</div>
+      <h3>All pieces on one page</h3>
+      <div class="meta">US Letter · actual size · crop and fold marks</div>
+      <p>For printing at home. Print at 100% and cut on the marks.</p>
+      <div class="actions">
+        <button type="button" class="primary dl-only" data-file="print/ICARUS_print-sheet_US-Letter.pdf">Download PDF</button>
+        <a class="btn" href="print/ICARUS_print-sheet_US-Letter.pdf" target="_blank" rel="noopener">Open PDF</a>
+      </div>
+    </div>
+  </article>`;
+
+const put = (id, html, css) => { const el = document.getElementById(id); el.innerHTML = html; if (css) Object.assign(el.style, css); };
+put("v-closed", `
+  <div class="panel" style="left:${MM(2)};top:${MM(2.5)};width:${MM(49)};height:${MM(38)};">${tray()}</div>
+  <div class="panel" style="right:${MM(2)};top:${MM(1.5)};box-shadow:-2px 0 6px rgba(0,0,0,.5)">${front()}</div>`);
+put("v-lid", `<div class="panel" style="left:${MM(1.5)};top:${MM(1.5)}">${liner()}</div>`);
+put("v-tray", `
+  <div class="panel" style="left:0;top:${MM(2.5)}">${tray()}</div>
+  <div class="disc" id="disc" style="left:${MM(11.5)};top:${MM(1.5)};width:${MM(40)};height:${MM(40)};box-shadow:0 2px 10px rgba(0,0,0,.6)">${discArt()}</div>`);
+put("v-back", `<div class="panel" style="left:${MM(2)};top:${MM(2.5)}">${back()}</div>`);
+put("v-spine", spine(), { marginTop: MM(2.5) });
+
+const discBtn = document.getElementById("disc-btn");
+discBtn.addEventListener("click", () => {
+  const out = document.getElementById("disc").classList.toggle("out");
+  discBtn.textContent = out ? "Put the disc back" : "Take the disc out";
+});
+
+const root = document.documentElement, zf = document.getElementById("z-fit"), zb = document.getElementById("z-big");
+let big = false;
+function fit() {
+  const w = document.querySelector("#preview").clientWidth;
+  root.style.setProperty("--mm", (big ? 11 : Math.max(3, Math.min(6.4, w / 112))).toFixed(2) + "px");
+}
+zf.onclick = () => { big = false; zf.setAttribute("aria-pressed", "true"); zb.setAttribute("aria-pressed", "false"); fit(); };
+zb.onclick = () => { big = true; zb.setAttribute("aria-pressed", "true"); zf.setAttribute("aria-pressed", "false"); fit(); };
+addEventListener("resize", fit); fit();
+
+// 3D case. Art comes straight from the print files, cropped to the cut line (3 mm bleed off).
+const U = v => `calc(var(--u)*${v})`;
+const crop = (el, file, imgW, imgH, x, y, w, h, box) => {
+  Object.assign(el.style, { left: U(box[0]), top: U(box[1]), width: U(w), height: U(h),
+    backgroundImage: `url(print/${file})`,
+    backgroundSize: `${imgW / w * 100}% ${imgH / h * 100}%`,
+    backgroundPosition: `${imgW === w ? 50 : x / (imgW - w) * 100}% ${imgH === h ? 50 : y / (imgH - h) * 100}%` });
+};
+const g = id => document.getElementById(id);
+crop(g("f-front"), "ICARUS_A_booklet-outside.png", 86, 46, 43, 3, 40, 40, [11.5, 1.5]);
+crop(g("f-liner"), "ICARUS_A_booklet-outside.png", 86, 46, 3, 3, 40, 40, [1.5, 1.5]);
+crop(g("f-back"), "ICARUS_B_back-cover.png", 59, 44, 3, 3, 49, 38, [4, 2.5]);
+crop(g("f-spine"), "ICARUS_B_back-cover.png", 59, 44, 52, 3, 4, 38, [.5, 2.5]);
+crop(g("f-tray"), "ICARUS_C_inside-card.png", 59, 44, 3, 3, 53, 38, [0, 2.5]);
+
+const stage = g("stage"), obj = g("obj"), lid = g("lid"), disc3d = g("disc3d"), discface = g("discface"), discBtn3 = g("discout3d"), lidr = g("lidr"), openBtn = g("open3d"), flipBtn = g("flip3d");
+const VIEW = { ry: -28, rx: 12 };
+let ry = VIEW.ry, rx = VIEW.rx, open = 0, discOut = false, busy = false;
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait = ms => new Promise(r => setTimeout(r, still ? 0 : ms));
+const DISC = { in: `translateZ(${U(.8)})`, lift: `translateZ(${U(10)})`, out: `translate3d(${U(28)},${U(-3)},${U(14)}) rotateY(-40deg) rotateZ(-12deg)` };
+function draw3d() {
+  obj.style.transform = `translateX(${U(Math.min(open, 150) / 150 * 24)}) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  lid.style.transform = `translateZ(${U(4)}) rotateY(${-open}deg)`;
+  discface.classList.toggle("spin", open > 95 || discOut);
+  discBtn3.textContent = discOut ? "Put the disc back" : "Take the disc out";
+  lidr.value = Math.round(open);
+  openBtn.textContent = open > 0 ? "Close the case" : "Open the case";
+  const backSide = Math.cos(ry * Math.PI / 180) < 0;
+  flipBtn.textContent = backSide ? "Show the front" : "Show the back";
+}
+function size3d() { stage.style.setProperty("--u", Math.max(2.6, Math.min(7.5, stage.clientWidth / 128)).toFixed(2) + "px"); }
+let drag = null;
+stage.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, ry, rx }; stage.setPointerCapture(e.pointerId); stage.classList.add("drag"); obj.classList.add("live"); });
+stage.addEventListener("pointermove", e => {
+  if (!drag) return;
+  ry = drag.ry + (e.clientX - drag.x) * .45;
+  rx = Math.max(-50, Math.min(50, drag.rx - (e.clientY - drag.y) * .3));
+  draw3d();
+});
+const endDrag = () => { drag = null; stage.classList.remove("drag"); obj.classList.remove("live"); };
+stage.addEventListener("pointerup", endDrag);
+stage.addEventListener("pointercancel", endDrag);
+async function setDisc(out) {
+  if (busy || out === discOut) return;
+  busy = true;
+  if (out) {
+    if (Math.cos(ry * Math.PI / 180) < 0) { ry = VIEW.ry; rx = VIEW.rx; draw3d(); await wait(500); }
+    if (open < 100) { open = 150; draw3d(); await wait(950); }
+    disc3d.style.transform = DISC.lift; await wait(480);
+    disc3d.style.transform = DISC.out; discOut = true; draw3d(); await wait(560);
+  } else {
+    disc3d.style.transform = DISC.lift; await wait(560);
+    disc3d.style.transform = DISC.in; discOut = false; draw3d(); await wait(480);
+  }
+  busy = false;
+}
+discBtn3.addEventListener("click", () => setDisc(!discOut));
+openBtn.addEventListener("click", async () => {
+  if (busy) return;
+  if (open > 0 && discOut) await setDisc(false);
+  open = open > 0 ? 0 : 150;
+  if (open && Math.cos(ry * Math.PI / 180) < 0) { ry = VIEW.ry; rx = VIEW.rx; }
+  draw3d();
+});
+lidr.addEventListener("input", () => { if (busy) { lidr.value = Math.round(open); return; } lid.classList.add("live"); open = Math.max(+lidr.value, discOut ? 100 : 0); draw3d(); });
+lidr.addEventListener("change", () => lid.classList.remove("live"));
+flipBtn.addEventListener("click", () => { ry += Math.cos(ry * Math.PI / 180) < 0 ? -180 : 180; draw3d(); });
+g("reset3d").addEventListener("click", async () => { if (busy) return; if (discOut) await setDisc(false); ry = VIEW.ry; rx = VIEW.rx; open = 0; draw3d(); });
+addEventListener("resize", size3d);
+size3d(); draw3d();
+
+// Always open at the top: don't restore an old scroll position or jump to a section from an earlier click.
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+scrollTo(0, 0);
+addEventListener("load", () => scrollTo(0, 0));
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const target = document.querySelector(a.getAttribute("href"));
+  if (!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}));
+
+let zipLib = null;
+const loadZip = () => zipLib || (zipLib = new Promise((ok, bad) => {
+  const sc = document.createElement("script");
+  sc.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+  sc.onload = ok; sc.onerror = () => { zipLib = null; bad({ code: "fetch" }); };
+  document.head.appendChild(sc);
+}));
+
+// Downloads: real save buttons where the viewer allows them; "Open" links always work as a fallback.
+const statusEl = document.querySelector(".status");
+// Outside Claude (e.g. on a normal website) the browser can save files itself.
+const nativeSave = { save: async ({ filename, data }) => {
+  const url = URL.createObjectURL(data), a = document.createElement("a");
+  a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+  return { status: "saved" };
+} };
+let downloads = null;
+(async () => {
+  try { downloads = window.claude?.use ? await window.claude.use("downloads") : nativeSave; } catch (e) { downloads = null; }
+  document.body.classList.toggle("can-dl", !!downloads);
+})();
+document.addEventListener("click", async e => {
+  const btn = e.target.closest("button[data-file], button[data-zip]"); if (!btn || !downloads) return;
+  const zip = btn.hasAttribute("data-zip");
+  const name = zip ? "ICARUS_keychain_all-files.zip" : btn.dataset.file.split("/").pop(), label = btn.textContent;
+  btn.disabled = true; btn.textContent = "Preparing…"; statusEl.textContent = "";
+  try {
+    let data;
+    if (zip) {
+      await loadZip();
+      const z = new JSZip();
+      const all = FILES.map(f => f.file).concat("ICARUS_print-sheet_US-Letter.pdf");
+      await Promise.all(all.map(async f => { const r = await fetch("print/" + f); if (!r.ok) throw { code: "fetch" }; z.file(f, await r.blob()); }));
+      data = await z.generateAsync({ type: "blob" });
+    } else {
+      const res = await fetch(btn.dataset.file); if (!res.ok) throw { code: "fetch" };
+      data = await res.blob();
+    }
+    await downloads.save({ filename: name, data });
+    statusEl.textContent = `Saved ${name}`;
+  } catch (err) {
+    const c = err && err.code;
+    if (c === "declined") statusEl.textContent = "";
+    else if (c === "rate_limited") statusEl.textContent = "Another save is still open. Finish that one first.";
+    else if (["unavailable", "not_granted", "capability_disabled", "capability_removed"].includes(c)) { downloads = null; document.body.classList.remove("can-dl"); statusEl.textContent = "Saving isn't available here. Use the Open links instead."; }
+    else statusEl.textContent = zip ? "Couldn't build the zip. Download the files one at a time below." : `Couldn't save ${name}. Use its Open link and save from there.`;
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
+</script>
+
+</body>
+</html>
