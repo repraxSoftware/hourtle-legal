@@ -416,9 +416,9 @@ const VIEW = { ry: -28, rx: 12 };
 let ry = VIEW.ry, rx = VIEW.rx, open = 0, discOut = false, busy = false;
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const wait = ms => new Promise(r => setTimeout(r, still ? 0 : ms));
-const DISC = { in: `translateZ(${U(.8)})`, lift: `translateZ(${U(10)})`, out: `translate3d(${U(28)},${U(-3)},${U(14)}) rotateY(-40deg) rotateZ(-12deg)` };
+const DISC = { in: `translateZ(${U(.8)})`, lift: `translateZ(${U(10)})`, out: `translate3d(${U(22)},${U(-3)},${U(12)}) rotateY(-40deg) rotateZ(-12deg)` };
 function draw3d() {
-  obj.style.transform = `translateX(${U(Math.min(open, 150) / 150 * 24)}) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  obj.style.transform = `translateX(${U(Math.min(open, 150) / 150 * 24 - (discOut ? 8 : 0))}) rotateX(${rx}deg) rotateY(${ry}deg)`;
   lid.style.transform = `translateZ(${U(4)}) rotateY(${-open}deg)`;
   discface.classList.toggle("spin", open > 95 || discOut);
   discBtn3.textContent = discOut ? "Put the disc back" : "Take the disc out";
