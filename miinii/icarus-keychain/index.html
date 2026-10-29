@@ -74,18 +74,7 @@ button[aria-pressed="true"] { border-color: var(--red); color: var(--ember); }
 .can-dl .dl-only { display: inline-flex !important; }
 .status { font-size: 13px; color: var(--ember); min-height: 1em; }
 
-.row { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-start; overflow-x: auto; padding: 18px 2px 6px; }
-figure { margin: 0; display: grid; gap: 10px; justify-items: start; }
-figcaption { font-size: 13px; color: var(--muted); max-width: 46ch; }
-figcaption b { color: var(--text); font-weight: 600; }
-.zoom { display: flex; gap: 6px; }
-.zoom button { padding: 6px 12px; font-size: 13px; }
 
-.case { position: relative; width: calc(var(--mm) * 53); height: calc(var(--mm) * 43); border-radius: calc(var(--mm) * 1.2); background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.28); box-shadow: inset 0 0 0 calc(var(--mm) * .6) rgba(255,255,255,.05); flex: none; }
-.case::before { content: ""; position: absolute; left: 50%; top: calc(var(--mm) * -4); width: calc(var(--mm) * 5); height: calc(var(--mm) * 4.4); transform: translateX(-50%); border: 1px solid rgba(255,255,255,.28); border-bottom: 0; border-radius: calc(var(--mm) * 2.5) calc(var(--mm) * 2.5) 0 0; }
-.case.nohook::before { display: none; }
-.open { display: flex; gap: 2px; flex: none; }
-.panel { position: absolute; overflow: hidden; }
 .p { position: relative; overflow: hidden; flex: none; }
 .ph { position: absolute; inset: 0; }
 .bin { position: absolute; inset: -2%; font-family: var(--mono); font-size: calc(var(--mm) * 1.35); line-height: 1.22; color: #fff; opacity: .085; word-break: break-all; letter-spacing: .05em; pointer-events: none; }
@@ -94,9 +83,6 @@ figcaption b { color: var(--text); font-weight: 600; }
 .logo { display: block; }
 .logo path { fill: var(--red); }
 .logo.light path { fill: #fff; }
-.disc { position: absolute; border-radius: 50%; overflow: hidden; transition: transform .45s cubic-bezier(.2,.7,.2,1), opacity .45s; }
-.disc.out { transform: translate(calc(var(--mm) * 30), calc(var(--mm) * -6)) rotate(40deg); opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .disc { transition: none; } }
 
 /* 3D case: every length is in --u (px per mm). Case 53 × 43 × 8 mm, hinge on the left. */
 .stage { --u: 7px; position: relative; height: calc(var(--u) * 80); min-height: 300px; perspective: calc(var(--u) * 240); display: grid; place-items: center; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; background: radial-gradient(ellipse at 50% 62%, #2b0a0c 0, #140b0c 45%, var(--ink) 80%); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
@@ -201,33 +187,6 @@ footer { border-top: 1px solid var(--rule); padding-block: 20px 36px; color: var
         <button type="button" id="discout3d">Take the disc out</button>
         <button type="button" id="flip3d">Show the back</button>
         <button type="button" id="reset3d">Reset view</button>
-      </div>
-      <div class="sec-head" style="margin-top:12px">
-        <h3 style="margin:0;font-size:16px;font-weight:600">Flat views</h3>
-        <div class="zoom" role="group" aria-label="Flat view size">
-          <button type="button" id="z-fit" aria-pressed="true">Fit</button>
-          <button type="button" id="z-big" aria-pressed="false">Large</button>
-        </div>
-      </div>
-      <div class="row">
-        <figure>
-          <div class="case" id="v-closed"></div>
-          <figcaption><b>Closed.</b> The booklet's cover sits in the lid. The black strip of the inside card shows on the left, like a real jewel case.</figcaption>
-        </figure>
-        <figure>
-          <div class="open">
-            <div class="case nohook" id="v-lid"></div>
-            <div class="case" id="v-tray"></div>
-          </div>
-          <figcaption><b>Opened.</b> Left: the booklet's back page. Right: the inside card under the disc. <button type="button" id="disc-btn" style="margin-top:6px;font-size:13px;padding:5px 10px">Take the disc out</button></figcaption>
-        </figure>
-        <figure>
-          <div style="display:flex;gap:calc(var(--mm)*2);align-items:flex-start">
-            <div class="case" id="v-back"></div>
-            <div id="v-spine"></div>
-          </div>
-          <figcaption><b>Back.</b> The back cover, with its 4 mm spine shown beside it. The spine folds round the side of the case.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -384,32 +343,6 @@ document.getElementById("file-grid").innerHTML = PHOTO_CARD + FILES.map(f => `
     </div>
   </article>`;
 
-const put = (id, html, css) => { const el = document.getElementById(id); el.innerHTML = html; if (css) Object.assign(el.style, css); };
-put("v-closed", `
-  <div class="panel" style="left:${MM(2)};top:${MM(2.5)};width:${MM(49)};height:${MM(38)};">${tray()}</div>
-  <div class="panel" style="right:${MM(2)};top:${MM(1.5)};box-shadow:-2px 0 6px rgba(0,0,0,.5)">${front()}</div>`);
-put("v-lid", `<div class="panel" style="left:${MM(1.5)};top:${MM(1.5)}">${liner()}</div>`);
-put("v-tray", `
-  <div class="panel" style="left:0;top:${MM(2.5)}">${tray()}</div>
-  <div class="disc" id="disc" style="left:${MM(11.5)};top:${MM(1.5)};width:${MM(40)};height:${MM(40)};box-shadow:0 2px 10px rgba(0,0,0,.6)">${discArt()}</div>`);
-put("v-back", `<div class="panel" style="left:${MM(2)};top:${MM(2.5)}">${back()}</div>`);
-put("v-spine", spine(), { marginTop: MM(2.5) });
-
-const discBtn = document.getElementById("disc-btn");
-discBtn.addEventListener("click", () => {
-  const out = document.getElementById("disc").classList.toggle("out");
-  discBtn.textContent = out ? "Put the disc back" : "Take the disc out";
-});
-
-const root = document.documentElement, zf = document.getElementById("z-fit"), zb = document.getElementById("z-big");
-let big = false;
-function fit() {
-  const w = document.querySelector("#preview").clientWidth;
-  root.style.setProperty("--mm", (big ? 11 : Math.max(3, Math.min(6.4, w / 112))).toFixed(2) + "px");
-}
-zf.onclick = () => { big = false; zf.setAttribute("aria-pressed", "true"); zb.setAttribute("aria-pressed", "false"); fit(); };
-zb.onclick = () => { big = true; zb.setAttribute("aria-pressed", "true"); zf.setAttribute("aria-pressed", "false"); fit(); };
-addEventListener("resize", fit); fit();
 
 // 3D case. Art comes straight from the print files, cropped to the cut line (3 mm bleed off).
 const U = v => `calc(var(--u)*${v})`;
