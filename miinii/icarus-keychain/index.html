@@ -74,7 +74,6 @@ button[aria-pressed="true"] { border-color: var(--red); color: var(--ember); }
 .can-dl .dl-only { display: inline-flex !important; }
 .status { font-size: 13px; color: var(--ember); min-height: 1em; }
 
-
 .p { position: relative; overflow: hidden; flex: none; }
 .ph { position: absolute; inset: 0; }
 .bin { position: absolute; inset: -2%; font-family: var(--mono); font-size: calc(var(--mm) * 1.35); line-height: 1.22; color: #fff; opacity: .085; word-break: break-all; letter-spacing: .05em; pointer-events: none; }
@@ -142,8 +141,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 20px 36px; color: var
   <div class="inner">
     <a class="brand" href="#top">ICARUS <span>·</span> keychain</a>
     <div class="links">
-      <a href="#files">Files</a>
       <a href="#preview">3D preview</a>
+      <a href="#files">Files</a>
     </div>
     <span class="status" role="status" aria-live="polite"></span>
     <a class="btn" href="https://open.spotify.com/album/1h5FB4JK6Y62XeSRe8m2km" target="_blank" rel="noopener">Listen on Spotify ↗</a>
@@ -153,14 +152,6 @@ footer { border-top: 1px solid var(--rule); padding-block: 20px 36px; color: var
 
 <main class="gutter" id="top">
   <div class="inner" style="display:grid;gap:56px">
-    <section id="files" aria-labelledby="h-files">
-      <div class="sec-head">
-        <h2 id="h-files">Files</h2>
-        <p>Use the PNGs for a print shop or UV printer. Use the PDF sheet to print everything at home on one US Letter page.</p>
-      </div>
-      <div class="files" id="file-grid"></div>
-    </section>
-
     <section id="preview" aria-labelledby="h-preview">
       <div class="sec-head">
         <h2 id="h-preview">What it looks like</h2>
@@ -188,6 +179,14 @@ footer { border-top: 1px solid var(--rule); padding-block: 20px 36px; color: var
         <button type="button" id="flip3d">Show the back</button>
         <button type="button" id="reset3d">Reset view</button>
       </div>
+    </section>
+
+    <section id="files" aria-labelledby="h-files">
+      <div class="sec-head">
+        <h2 id="h-files">Files</h2>
+        <p>Use the PNGs for a print shop or UV printer. Use the PDF sheet to print everything at home on one US Letter page.</p>
+      </div>
+      <div class="files" id="file-grid"></div>
     </section>
 
   </div>
@@ -342,7 +341,6 @@ document.getElementById("file-grid").innerHTML = PHOTO_CARD + FILES.map(f => `
       </div>
     </div>
   </article>`;
-
 
 // 3D case. Art comes straight from the print files, cropped to the cut line (3 mm bleed off).
 const U = v => `calc(var(--u)*${v})`;
