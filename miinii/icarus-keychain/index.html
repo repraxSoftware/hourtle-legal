@@ -297,16 +297,6 @@ const spine = (e = E0) => box(4, 38, e, "#0b0a0a", `
     <div style="writing-mode:vertical-rl;font-weight:600;font-size:${MM(1.9)};letter-spacing:.2em;color:#ee242e;white-space:nowrap">MIINII · <span style="color:#fff">ICARUS</span></div>
   </div>`);
 
-const tray = (e = E0) => box(53, 38, e, "#0b0a0a", `
-  ${cover("bg-tray.jpg", "60% 40%")}
-  <div class="ph" style="background:linear-gradient(to top,rgba(11,10,10,.7) 0,transparent ${MM(9 + e.b)})"></div>
-  <div style="position:absolute;left:0;top:0;bottom:0;width:${MM(7.2 + e.l)};background:#0b0a0a;border-right:1px solid #3a0a0e">
-    <div style="position:absolute;left:${MM(e.l)};right:0;top:${MM(e.t)};bottom:${MM(e.b)};display:flex;align-items:center;justify-content:center">
-      <div style="writing-mode:vertical-rl;font-weight:600;font-size:${MM(1.9)};letter-spacing:.3em;color:#ee242e">MIINII</div>
-    </div>
-  </div>
-  <img src="moto.png" alt="miinii reclining on a black sport bike" style="position:absolute;left:${MM(10 + e.l)};bottom:${MM(2.5 + e.b)};width:${MM(40)}">`);
-
 const discArt = (b = 0) => {
   const d = 40 + 2 * b;
   return `
@@ -330,7 +320,6 @@ const PIECES = {
        html: () => `<div style="display:flex">${liner({ l: BLEED, t: BLEED, r: 0, b: BLEED })}${front({ l: 0, t: BLEED, r: BLEED, b: BLEED })}</div>` },
   B: { file: "ICARUS_B_back-cover.png", w: 53, h: 38,
        html: () => `<div style="display:flex">${back({ l: BLEED, t: BLEED, r: 0, b: BLEED })}${spine({ l: 0, t: BLEED, r: BLEED, b: BLEED })}</div>` },
-  C: { file: "ICARUS_C_inside-card.png", w: 53, h: 38, html: () => tray(ALL(BLEED)) },
   D: { file: "ICARUS_D_disc.png", w: 40, h: 40, html: () => disc(BLEED) },
 };
 
@@ -338,7 +327,6 @@ const PIECES = {
 const FILES = [
   { id: "A", tag: "A · Booklet outside", title: "Front cover + back page", file: "ICARUS_A_booklet-outside.png", meta: "80 × 40 mm · folds to 40 × 40", px: "1185 × 634 px", desc: "Right half is the front cover. Left half is the page you see when the case opens." },
   { id: "B", tag: "B · Back cover", title: "Back cover with spine", file: "ICARUS_B_back-cover.png", meta: "53 × 38 mm · 4 mm spine on the right", px: "813 × 606 px", desc: "Shows through the back of the case. The spine folds round the hinge side." },
-  { id: "C", tag: "C · Inside card", title: "Under the disc", file: "ICARUS_C_inside-card.png", meta: "53 × 38 mm", px: "813 × 606 px", desc: "Sits in the tray under the disc. The black strip goes on the hinge side." },
   { id: "D", tag: "D · Disc", title: "Disc label", file: "ICARUS_D_disc.png", meta: "⌀ 40 mm · centre hole", px: "634 × 634 px", desc: "Transparent outside the circle and in the centre hole, ready to cut or UV print.", round: true },
 ];
 
