@@ -334,7 +334,6 @@ const PIECES = {
   D: { file: "ICARUS_D_disc.png", w: 40, h: 40, html: () => disc(BLEED) },
 };
 
-
 const FILES = [
   { id: "A", tag: "A · Booklet outside", title: "Front cover + back page", file: "ICARUS_A_booklet-outside.png", meta: "80 × 40 mm · folds to 40 × 40", px: "1185 × 634 px", desc: "Right half is the front cover. Left half is the page you see when the case opens." },
   { id: "B", tag: "B · Back cover", title: "Back cover with spine", file: "ICARUS_B_back-cover.png", meta: "53 × 38 mm · 4 mm spine on the right", px: "813 × 606 px", desc: "Shows through the back of the case. The spine folds round the hinge side." },
@@ -342,7 +341,21 @@ const FILES = [
   { id: "D", tag: "D · Disc", title: "Disc label", file: "ICARUS_D_disc.png", meta: "⌀ 40 mm · centre hole", px: "634 × 634 px", desc: "Transparent outside the circle and in the centre hole, ready to cut or UV print.", round: true },
 ];
 
-document.getElementById("file-grid").innerHTML = FILES.map(f => `
+const PHOTO_CARD = `
+  <article class="file">
+    <div class="thumb"><img src="print/ICARUS_4x6-photo-print.jpg" alt="4x6 photo print with all four pieces laid out at actual size" loading="lazy"></div>
+    <div class="body">
+      <div class="tag">4×6 photo print · Walgreens / CVS</div>
+      <h3>Everything on one photo</h3>
+      <div class="meta">4 × 6 in · 300 dpi · 1800 × 1200 px · JPG</div>
+      <p>Order one 4×6 print (matte looks best), cut on the crop marks, and you have every piece. Measure the 30 mm bar to check it printed at actual size.</p>
+      <div class="actions">
+        <button type="button" class="primary dl-only" data-file="print/ICARUS_4x6-photo-print.jpg">Download JPG</button>
+        <a class="btn" href="print/ICARUS_4x6-photo-print.jpg" target="_blank" rel="noopener">Open full size</a>
+      </div>
+    </div>
+  </article>`;
+document.getElementById("file-grid").innerHTML = PHOTO_CARD + FILES.map(f => `
   <article class="file">
     <div class="thumb${f.round ? " round" : ""}"><img src="print/${f.file}" alt="${f.tag} print file" loading="lazy"></div>
     <div class="body">
@@ -513,7 +526,7 @@ document.addEventListener("click", async e => {
     if (zip) {
       await loadZip();
       const z = new JSZip();
-      const all = FILES.map(f => f.file).concat("ICARUS_print-sheet_US-Letter.pdf");
+      const all = FILES.map(f => f.file).concat("ICARUS_print-sheet_US-Letter.pdf", "ICARUS_4x6-photo-print.jpg");
       await Promise.all(all.map(async f => { const r = await fetch("print/" + f); if (!r.ok) throw { code: "fetch" }; z.file(f, await r.blob()); }));
       data = await z.generateAsync({ type: "blob" });
     } else {
